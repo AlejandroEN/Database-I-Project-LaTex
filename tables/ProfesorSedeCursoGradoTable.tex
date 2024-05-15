@@ -1,0 +1,19 @@
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|c|c|l|}
+		\hline
+		\textbf{Nombre del campo} & \textbf{Tipo de dato} & \textbf{PK} & \textbf{FK} & \textbf{Descripción}                                    \\
+		\hline
+		id                        & INT                   & X           &             & ID único para la combinación profesor-sede-curso-grado. \\
+		\hline
+		profesorDni               & CHAR(8)               &             & X           & DNI del profesor que imparte el curso.                  \\
+		\hline
+		sedeId                    & INT                   &             & X           & ID de la sede donde se imparte el curso.                \\
+		\hline
+		cursoId                   & INT                   &             & X           & ID del curso que se imparte.                            \\
+		\hline
+		gradoId                   & INT                   &             & X           & ID del grado para el que se imparte el curso.           \\
+		\hline
+	\end{tabular}
+	\caption{Cuadro 13: ProfesorSedeCursoGrado}
+\end{table}

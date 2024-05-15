@@ -1,0 +1,21 @@
+\usepackage{graphics}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{imakeidx}
+\usepackage{tabularx}
+\usepackage{array}
+
+\newcommand{\databaseTable}[2]{
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\textwidth}{|c|c|c|c|>{\centering\arraybackslash}X|}
+			\hline
+			\textbf{Nombre del campo} & \textbf{Tipo de dato} & \textbf{PK} & \textbf{FK} & \textbf{Descripción} \\
+			\hline
+			#1 \\
+			\hline
+		\end{tabularx}
+		\caption{#2}
+	\end{table}
+}

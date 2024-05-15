@@ -1,0 +1,19 @@
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|c|c|l|}
+		\hline
+		\textbf{Nombre del campo} & \textbf{Tipo de dato} & \textbf{PK} & \textbf{FK} & \textbf{Descripción}                            \\
+		\hline
+		alumnoDni                 & CHAR(8)               & X           & X           & DNI del alumno matriculado.                     \\
+		\hline
+		year                      & DATE                  & X           &             & Año de la matrícula.                            \\
+		\hline
+		sedeId                    & INT                   & X           & X           & ID de la sede donde el alumno está matriculado. \\
+		\hline
+		gradoId                   & INT                   &             & X           & Grado en el que el alumno está matriculado.     \\
+		\hline
+		secretarioDni             & CHAR(8)               &             & X           & DNI del secretario que realizó la matrícula.    \\
+		\hline
+	\end{tabular}
+	\caption{Cuadro 15: Matricula}
+\end{table}
