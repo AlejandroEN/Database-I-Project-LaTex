@@ -1,10 +1,52 @@
-\section{Modelo Relacional} (Guillermo)
+\section{Modelo Relacional}
 \subsection{Modelo Relacional}
+\begin{itemize}
+	\modeloRelacionalItem{InformacionInstitucion}{\underline{\blue{ruc}}, \blue{descripcion}, \blue{fundador}, \blue{fundacionFecha}, \blue{bannerUrl}, \blue{nombre}}
+	\modeloRelacionalItem{Persona}{\underline{\blue{dni}}, \blue{nombre}, \blue{primerApellido}, \blue{segundoApellido}, \blue{nacimientoFecha}, \blue{sexo}, \blue{email}}
+	\modeloRelacionalItem{Apoderado}{\underline{\blue{\green{Persona}.dni}}, \blue{numeroCelular}}
+	\modeloRelacionalItem{Alumno}{\underline{\blue{\green{Persona}.dni}}, nombreSeccion, Grado.id, Sede.id, Apoderado.dni}
+	\modeloRelacionalItem{Colaborador}{\underline{\blue{\green{Persona}.dni}}, sueldoMensual, cci, numeroCelular, horasSemanalesTrabajo}
+	\modeloRelacionalItem{Secretario}{\underline{\blue{\green{Colaborador}.dni}}, Sede.id}
+	\modeloRelacionalItem{Consejero}{\underline{\blue{\green{Colaborador}.dni}}, Sede.id}
+	\modeloRelacionalItem{Tutor}{\underline{\blue{\green{Colaborador}.dni}}, Sede.id}
+	\modeloRelacionalItem{Profesor}{\underline{\blue{\green{Colaborador}.dni}}}
+	\modeloRelacionalItem{ProfesorSede}{\underline{\blue{\green{Profesor}.dni}}, Sede.id}
+	\modeloRelacionalItem{Sede}{\underline{\blue{id}}, coordenadaLongitud, coordenadaLatitud, direccion, construccionFecha,Director.dni}
+	\modeloRelacionalItem{Grado}{\underline{\blue{id}}, nombre}
+	\modeloRelacionalItem{Curso}{\underline{\blue{id}}, nombre}
+	\modeloRelacionalItem{ProfesorCursoGrado}{\underline{\blue{\green{Curso}.id}}, \underline{\blue{\green{Grado}.id}}, \underline{\blue{\green{Profesor}.dni}}, periodoAcademico}
+	\modeloRelacionalItem{Salon}{aforo, \underline{\blue{nombreSeccion}}, Grado.id, \underline{\blue{\green{Sede}.id}}, Tutor.dni}
+	\modeloRelacionalItem{Matricula}{\underline{\blue{year}}, \underline{\blue{\green{Alumno}.dni}}, \underline{\blue{\green{Sede}.id}}, Grado.id, Secretario.dni}
+\end{itemize}
 \subsection{Especificaciones de transformación}
 \subsubsection{Entidades}
+\begin{itemize}
+	\item \textbf{Curso:} Se transforma en la tabla Curso con id como llave primaria. Cada curso tiene un nombre único. No hay dependencia directa con otras tablas a nivel de llave primaria.
+	\item \textbf{Grado:} Se convierte en la tabla Grado con id como llave primaria, y nombre como atributo. Los grados organizan los cursos y se vinculan directamente con varios salones.
+	\item \textbf{Sede:} Se transforma en la tabla Sede con id como llave primaria. Incluye atributos como direccion, coordenadaLongitud, coordenadaLatitud, y construccionFecha. Representa una ubicación física donde se imparten cursos y trabajan los colaboradores.
+	\item \textbf{InformacionInstitucion:} Se convierte en la tabla InformacionInstitucion con ruc como llave primaria. Incluye descripcion, fundador, fundacionFecha, bannerUrl, nombre. Esta entidad encapsula los datos fundamentales de la institución educativa.
+\end{itemize}
 \subsubsection{Entidades débiles}
-\subsubsection{Entidades superclase y subclases}
+\begin{itemize}
+	\item \textbf{Salon:} Se convierte en la tabla Salon con una llave primaria compuesta por nombreSeccion, gradoId y sedeId. Dependiente de Sede, reflejando que cada salón está ubicado en una sede específica. Atributos incluyen aforo y tutorDni como foreign key.
+	\item \textbf{Matricula:} La tabla Matricula define su llave primaria compuesta por alumnoDni, sedeId, y year, lo que refleja que un alumno se puede matricular en una sede específica cada año. Las claves foráneas incluyen gradoId y secretarioDni. gradoId vincula la matrícula al grado específico al cual el alumno está inscrito, facilitando la organización académica. secretarioDni conecta cada matrícula al secretario que procesó la inscripción, integrando la administración del proceso.
+\end{itemize}
+\subsubsection{Entidades superclases y subclases}
+\begin{itemize}
+	\item \textbf{Persona:} Superclase que se transforma en la tabla Persona con dni como llave primaria. Todos los individuos (alumnos, apoderados, colaboradores) se derivan de esta tabla, heredando dni y demás atributos personales.
+	\item \textbf{Alumno, Apoderado, Colaborador:} Subclases de Persona. Cada una con sus respectivas tablas donde dni actúa como clave foránea y primaria. Alumno incluye nombreSeccion, gradoId, sedeId y apoderadoDni, mostrando la dependencia y relaciones con otras entidades.
+	\item \textbf{Profesor, Tutor, Secretario, Consejero, Director:} Subclases de Colaborador, cada una con roles y responsabilidades definidos, vinculados a sedes y otros elementos estructurales de la institución.
+\end{itemize}
 \subsubsection{Relaciones binarias}
+\begin{itemize}
+	\item \textbf{Salón y Sede:} Cada salón pertenece a una sede, representando una relación de 1 a n, donde cada sede puede contener varios salones.
+	\item \textbf{Alumno y Salón:} Relación de n a 1, cada alumno está asignado a un salón específico.
+	\item \textbf{Grado y Salón:} Relación de 1 a n, cada grado se imparte en varios salones, mostrando que un salón puede ser utilizado para diferentes grados dependiendo del horario y necesidad académica.
+	\item \textbf{Profesor y Sede:} Esta relación binaria indica cómo los profesores están asignados a sedes específicas. La multiplicidad muestra que un profesor puede estar asignado a varias sedes, y cada sede puede tener múltiples profesores.
+\end{itemize}
 \subsubsection{Relaciones ternarias}
+\begin{itemize}
+	\item \textbf{ProfesorCursoGrado:} Esta relación muestra que los cursos son ofrecidos en varios grados por diferentes profesores. La multiplicidad aquí refleja que un curso puede ser impartido en varios grados y que múltiples profesores pueden enseñar el mismo curso en diferentes grados.
+\end{itemize}
 \subsection{Diccionario de datos} (Alejandro)
-\input{tables/AlumnoTable.tex}
+\input{tables/alumno-table.tex}

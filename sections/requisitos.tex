@@ -1,25 +1,70 @@
 \section{Requisitos}
 \subsection{Introducción}
-En el mundo actual, las instituciones educativas son más que solo lugares de aprendizaje. Son microcosmos complejos que requieren una gestión eficiente y coordinada de una multitud de operaciones administrativas, académicas y operativas. Sin embargo, a medida que estas instituciones crecen y se vuelven más complejas, la gestión eficiente de estas operaciones se convierte en un desafío cada vez mayor.
+En el panorama educativo contemporáneo, las instituciones escolares representan no solo espacios de aprendizaje, sino también nodos vitales en la estructura social y cultural de una comunidad. La gestión eficiente de estos centros educativos no solo implica la impartición de conocimientos, sino también la administración fluida de una vasta cantidad de datos que abarcan desde la información personal de los estudiantes hasta los registros académicos y administrativos. En este contexto, surge la necesidad imperante de contar con sistemas de gestión de datos eficaces y estructurados que permitan a las instituciones educativas optimizar sus procesos internos y brindar un servicio de calidad.
 
-Este desafío se ve agravado por la falta de sistemas de gestión eficientes que puedan manejar la creciente complejidad de las operaciones de las instituciones educativas. La falta de eficiencia y coordinación en la gestión de estas operaciones puede llevar a una serie de problemas, desde la mala gestión de los recursos hasta la insatisfacción de los estudiantes y los padres.
+En respuesta a esta demanda, el presente informe aborda la problemática específica que enfrentan los colegios en cuanto a la gestión de datos. En un mundo cada vez más digitalizado, donde la información es un recurso invaluable, la falta de un sistema adecuado para almacenar, organizar y acceder a los datos relevantes puede generar ineficiencias significativas en la operatividad diaria de las instituciones educativas. Es en este contexto que se plantea la necesidad de desarrollar una base de datos estructurada y accesible que facilite la gestión integral de los datos necesarios para el funcionamiento óptimo de un colegio.
 
-En este informe, abordaremos un problema específico que enfrentan muchas instituciones educativas: la falta de eficiencia y coordinación en la gestión administrativa, académica y operativa. Este problema no solo afecta la calidad de la educación que se ofrece, sino que también puede tener un impacto negativo en la reputación de la institución.
+El proyecto en cuestión se centra en la creación de un modelo de base de datos diseñado específicamente para abordar los desafíos mencionados. A través de la implementación de diversas tablas y relaciones, se busca proporcionar una solución integral que permita a los colegios gestionar de manera eficiente información crucial fundamental para su operación. Este informe detalla el proceso de diseño, desarrollo e implementación de la base de datos, así como su potencial impacto en la optimización de la gestión escolar.
+\subsection{Descripción general del problema}
+Manejar los recursos, las finanzas, los inventarios, y las demás áreas necesarias para el buen funcionamiento de una empresa es un problema constante para cualquier compañía incipiente o veterana. Por ello, aunque existan distintos sistemas ERP de paga y open source que han dado una solución tecnológica a esta problemática, estos siguen siendo de difícil acceso para las PYMES de nuestro país debido al costo —en caso de los sistemas ERP de pago (SAP, Oracle Fusion Cloud ERP, Microsoft Dynamics 365, etc.)— o muy complejas de implementar y entender —en caso de los sistemas ERP open source (Odoo, ERPNext, Dolibarr, etc.). Las instituciones pequeñas y medianas de educación primaria y secundaria no son ajenas a esta necesidad, en consecuencia, distintas formas más o menos tecnológicas han sido implementadas para satisfacerla: desde anotaciones a lápiz y papel hasta tablas y tablas de Excel.
+\subsection{Necesidad y usos de la base de datos}
+Debido a la problemática antes descrita, es necesario proporcionar una base de datos para un sistema ERP open source simple y eficiente enfocado a los colegios de primaria y secundaria. Esta base de datos manejaría las entidades clave de todo colegio: alumnos, profesores, cursos, grados, salones, directores, secretarias, consejeros, etc; además, estaría preparada para soportar la incorporación de nuevas sedes.
 
-El objetivo de este proyecto es desarrollar una base de datos que pueda ayudar a abordar este problema. Con esto en mente, esperamos que este informe sirva como un punto de partida para entender la magnitud del problema y la necesidad de una solución efectiva. A medida que avanzamos desde una visión general de las instituciones educativas hasta un enfoque más específico en la necesidad de automatización, esperamos proporcionar una visión clara y detallada del problema que se resolverá.
-\subsection{Descripción general del problema} (Ismael)
-\subsection{Necesidad y usos de la base de datos} (Ismael)
-\subsection{¿Cómo resuelve el problema hoy?} (Alessandra)
+Un aspecto medular a todas las instituciones educativas son las matrículas, por ello, esta base de datos permitiría a los colegios capturar y guardar la información pertinente a cada matrícula: desde el alumno y su apoderado hasta la secretaria que realiza dicha matrícula.
+
+Por último, aunque el motivo principal de esta base de datos sea la de servir a un ERP, fácilmente podría adaptarse a una página web informativa sobre las sedes, profesores, grados y cursos que brinda la institución educativa.
+\subsection{¿Cómo resuelve el problema hoy?}
 \subsubsection{¿Cómo se almacenan y procesan los datos?}
+Hoy en día, en muchas escuelas, los datos se almacenan de manera dispersa y poco estructurada. Por lo general, se utilizan métodos tradicionales como hojas de cálculo, archivos físicos y sistemas informáticos fragmentados para gestionar la información. Los registros de estudiantes, personal docente, calificaciones y otros datos relevantes suelen estar dispersos en diferentes sistemas y formatos, lo que dificulta su acceso y gestión eficiente. Esta falta de centralización y estandarización puede generar problemas de integridad de datos y dificulta la generación de informes y análisis exhaustivos para la toma de decisiones fundamentadas.
 \subsubsection{Flujo de datos}
-\subsection{Descripción detallada del sistema} (Alessandra)
+Por lo general, los datos se recopilan y actualizan de forma independiente en cada sistema o plataforma utilizada en la escuela. Por ejemplo, los datos de los estudiantes pueden ingresarse en un sistema de gestión académica separado, mientras que la información del personal docente puede almacenarse en otro sistema diferente. Esta falta de integración dificulta la sincronización y actualización de datos en tiempo real, lo que a menudo resulta en inconsistencias y redundancias en la información. Además, el intercambio de datos entre diferentes sistemas puede requerir procesos manuales de exportación e importación, lo que aumenta el riesgo de errores y demoras en la disponibilidad de la información actualizada. En resumen, el flujo de datos en este contexto tiende a ser fragmentado y poco eficiente, lo que limita la capacidad de la escuela para gestionar de manera efectiva su información.
+\subsection{Descripción detallada del sistema}
 \subsubsection{Objetos de información actuales}
 \subsubsection{Características y funcionalidades esperadas}
+\begin{itemize}
+	\item Administrar toda la información del colegio en una única plataforma, desde los datos de los estudiantes y el personal hasta los detalles de la infraestructura y los recursos académicos.
+	\item Fácil de usar por los administradores, profesores, y personal administrativo del colegio, facilitando la navegación y la recuperación de información de manera eficiente.
+	\item Automatizar tareas rutinarias y repetitivas, lo que ayuda a reducir la carga administrativa y minimizar errores humanos.
+	\item Escalable y adaptable, permitiendo la incorporación de nuevas funcionalidades y el manejo de un creciente volumen de datos a medida que la institución crece.
+\end{itemize}
 \subsubsection{Tipos de usuarios existentes o necesarios}
-\subsubsection{Tipo de consulta y actualizaciones} (Ismael)
+\subsubsection{Tipo de consulta y actualizaciones}
+\begin{itemize}
+	\item Principales consultas:
+	      \begin{itemize}
+		      \item ¿Qué sedes existen?
+		      \item ¿Quién es el director de cada sede?
+		      \item ¿Qué profesores existen por sede?
+		      \item ¿Qué tutor hay en cada salón de cada sede?
+		      \item ¿Qué secretarios existen en cada sede?
+		      \item ¿Qué consejeros existen en cada sede?
+		      \item ¿Qué sede tiene más o menos alumnos?
+		      \item ¿Cuántos alumnos han sido matriculados en determinado año en una sede o en todas las sedes?
+		      \item ¿Quién es el apoderado de cada alumno?
+		      \item ¿Cuántas matrículas tiene una sede por año?
+		      \item ¿Qué secretaria registra más matrículas en cada sede y en todas las sedes?
+	      \end{itemize}
+	\item Principales actualizaciones:
+	      \begin{itemize}
+		      \item Actualización manual de la información general de la institución educativa.
+		      \item Actualización manual de los profesores, cursos, grados, sedes, alumnos, apoderados, directores, consejeros, secretarios y salones.
+	      \end{itemize}
+\end{itemize}
 \subsubsection{Tamaño estimado de la base de datos} (Ismael)
-\subsection{Objetivos del proyectos} (Alessandra)
+\subsection{Objetivos del proyectos}
+\begin{itemize}
+	\item Crear una base de datos unificada que consolide toda la información relevante del colegio, incluyendo datos de estudiantes, personal, y recursos, eliminando la fragmentación y redundancia de datos.
+	\item Facilitar el acceso a la información de manera rápida y eficiente para todos los usuarios autorizados, permitiendo consultas y generación de informes apropiados para la toma de decisiones.
+	\item Reducir la carga administrativa mediante la automatización de tareas rutinarias aumentando la eficiencia y disminuyendo el riesgo de errores manuales.
+\end{itemize}
 \subsection{Referencias del proyecto} (Alessandra)
 \subsection{Eventualidades} (Ismael)
 \subsubsection{Problemas que pudieran encontrarse en el proyecto}
+\begin{itemize}
+	\item Un potencial problema sería matricular a un alumno para determinada sede, pero que las vacantes para esa sede se hayan agotado (en el contexto de nuestro proyecto, nos referíamos al aforo de determinada aula que corresponde a determinado grado).
+\end{itemize}
 \subsubsection{Límites y alcances del proyecto}
+\begin{itemize}
+	\item Límites: Nuestro proyecto, a diferencia de un ERP robusto, no contempla un manejo completo del área de RR.HH., sin embargo, contemplamos una solución simple: atributos como sueldo o cci para los colaboradores. Además, tampoco abordamos funcionalidades adicionales como integración con sistemas externos, gestión avanzada de recursos financieros, o herramientas de análisis de datos complejos.
+	\item Alcances: Nuestro proyecto cubre una amplia gama de funcionalidades necesarias para gestionar una institución educativa, desde la administración de estudiantes y personal hasta la gestión de cursos y salones. Además, proporcionamos una base sólida para integrar todos los datos relevantes de una institución en un solo lugar, lo que facilita el acceso y la gestión de la información.
+\end{itemize}

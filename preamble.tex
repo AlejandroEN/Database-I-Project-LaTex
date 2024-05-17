@@ -1,9 +1,14 @@
-\usepackage{graphics}
-\usepackage[T1]{fontenc}
-\usepackage{float}
-\usepackage{imakeidx}
-\usepackage{tabularx}
+\usepackage{relsize}
 \usepackage{array}
+\usepackage{tabularx}
+\usepackage{imakeidx}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+
+\colorlet{darkGreen}{green!40!black}
 
 \newcommand{\databaseTable}[2]{
 	\begin{table}[H]
@@ -13,9 +18,31 @@
 			\hline
 			\textbf{Nombre del campo} & \textbf{Tipo de dato} & \textbf{PK} & \textbf{FK} & \textbf{Descripción} \\
 			\hline
-			#1 \\
+			#1                                                                                                   \\
 			\hline
 		\end{tabularx}
 		\caption{#2}
 	\end{table}
 }
+
+\newcommand{\entidadBullets}[3]
+{
+	\subsubsection{#1}
+	\begin{sloppy}
+		\begin{itemize}
+			\item Especificaciones:
+			      #2
+			\item Consideraciones:
+			      #3
+		\end{itemize}
+	\end{sloppy}
+}
+
+\newcommand{\modeloRelacionalItem}[2]
+{
+	\item \textcolor{darkGreen}{#1}(#2)
+}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+
+\newcommand{\green}[1]{\textcolor{darkGreen}{#1}}
