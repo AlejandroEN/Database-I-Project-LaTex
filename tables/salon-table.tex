@@ -1,21 +1,11 @@
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|l|c|c|l|}
-		\hline
-		\textbf{Nombre del campo} & \textbf{Tipo de dato} & \textbf{PK} & \textbf{FK} & \textbf{Descripción}                         \\
-		\hline
-		id                        & INT                   & X           &             & ID del salón.                                \\
-		\hline
-		aforo                     & INT                   &             &             & Capacidad máxima de estudiantes en el salón. \\
-		\hline
-		gradoId                   & INT                   &             & X           & ID del grado al que pertenece el salón.      \\
-		\hline
-		nombreDeSeccion           & TEXT                  &             &             & Nombre de la sección del salón.              \\
-		\hline
-		tutorDni                  & CHAR(8)               &             & X           & DNI del tutor asignado al salón.             \\
-		\hline
-		sedeId                    & INT                   &             & X           & ID de la sede a la que pertenece el salón.   \\
-		\hline
-	\end{tabular}
-	\caption{Cuadro 14: Salon}
-\end{table}
+\databaseTable{id                        & INT                   & X           &             & ID del salón.                                \\
+	\hline
+	aforo                     & INT                   &             &             & Capacidad máxima de estudiantes en el salón. \\
+	\hline
+	gradoId                   & INT                   &             & X           & ID del grado al que pertenece el salón.      \\
+	\hline
+	nombreDeSeccion           & TEXT                  &             &             & Nombre de la sección del salón.              \\
+	\hline
+	tutorDni                  & CHAR(8)               &             & X           & DNI del tutor asignado al salón.             \\
+	\hline
+	sedeId                    & INT                   &             & X           & ID de la sede a la que pertenece el salón.}{Tabla Salon}
