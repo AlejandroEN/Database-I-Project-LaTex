@@ -12,22 +12,20 @@
 	\item Un consejero es un colaborador y trabaja en una sola sede.
 	\item Un tutor es un colaborador, trabaja en una sola sede y se le asigna vigilar solo un solo salón.
 	\item Una sede tiene un id como identificador, una dirección y sus respectivas coordenadas, además de la fecha de su construcción, es dirigida por un solo director y en ella trabajan, uno o más consejeros, uno o más secretarios, uno o más tutores y uno o más profesores, y tiene uno o más salones.
-	\item Un salón tiene un id como identificador, cuenta con un número para el aforo y un nombre para la sección que realiza clases en este, además pertenece a una sola sede, es vigilado por un tutor, en el estudian muchos alumnos y en él se dictan clases de un solo grado
+	\item Un salón tiene nombreSeccion como llave parcial, cuenta con un número para el aforo, además, pertenece a una sola sede, es vigilado por un tutor, en él estudian muchos alumnos y en él se dictan clases de un solo grado.
 	\item Un grado está identificado por un id, tiene un nombre, las clases de un grado son dictadas en uno o más salones por un profesor en cierto periodo académico y este contiene muchos cursos.
 	\item Un curso está identificado por un id, posee un nombre, está dictado por un profesor y está contenido en uno o más grados.
 	\item  Una matrícula es realizada en cierto año por un apoderado al darle los datos de un alumno a un secretario para que lo registre en un grado y una sede.
 \end{itemize}
 \subsection{Modelo Entidad-Relación}
-
 \begin{figure}[htp]
 	\centering
 	\includegraphics[width=\textwidth]{figures/modeloer.png}
 	\caption{Modelo Entidad-Relación}
 	\label{fig:my_label}
 \end{figure}
-
 \subsection{Especificaciones y consideraciones sobre el modelo}
-\entidadBullets{Entidad InformacionInstitucion}{Almacena la información más importante de cada colegio: descripción, banner, nombre, fecha de fundación, fundador y el RUC como llave primaria.}{El RUC es seleccionado como la llave primaria ya que es un identificador único y oficial para cada institución. Esto facilita la gestión administrativa y legal de la información del colegio. Esta entidad no es una superclase y no participa en relaciones de herencia.}
+\entidadBullets{Entidad InformacionInstitucion}{Almacena la información más importante de cada colegio: descripción, banner, nombre, fecha de fundación, fundador y el RUC como llave primaria.}{El RUC es seleccionado como la llave primaria ya que es un identificador único y oficial para cada institución. Esto facilita la gestión administrativa y legal de la información de la institución. Esta entidad no posee relaciones con ninguna otra entidad, ya que solo almacenerá una tupla la cual tendrá la información antes descrita.}
 \entidadBullets{Entidad Persona}{Almacena la información más importante de cada individuo, incluyendo DNI (como llave primaria), nombres, apellidos, fecha de nacimiento, sexo y email.}{El DNI es usado como llave primaria, proporcionando un medio único y eficiente para identificar a cada persona. Esta entidad actúa como una superclase que hereda a las subclases Alumno, Apoderado y Colaborador, permitiendo solapamiento y cobertura total.}
 \entidadBullets{Entidad Alumno}{Subclase de Persona. Está vinculado a un único salón y es matriculado por un solo apoderado.}{Hereda el DNI de Persona como llave primaria. La relación exclusiva con un apoderado y un salón justifica el mantenimiento de estas conexiones a través de claves foráneas, lo cual asegura integridad referencial y facilita consultas relacionales.}
 \entidadBullets{Entidad Apoderado}{Subclase de Persona. Posee un número de celular adicional y puede matricular a uno o más alumnos.}{Utiliza el DNI de Persona como llave primaria. La capacidad de vincularse con múltiples alumnos refuerza su rol en el proceso educativo y administrativo, y la integridad referencial se mantiene a través de relaciones definidas en la base de datos.}
