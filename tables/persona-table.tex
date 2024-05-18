@@ -1,13 +1,14 @@
-\databaseTable{dni                       & CHAR(8)               & X           &             & DNI de la persona.                 \\
+\databaseTable{
+	dni                       & CHAR(8)               & X           &             & DNI de la persona.                 \\
 	\hline
-	nombres                   & TEXT                  &             &             & Nombres completos de la persona.   \\
+	nombres                   & VARCHAR(100)                  &             &             & Nombres completos de la persona.   \\
 	\hline
-	primerApellido            & TEXT                  &             &             & Primer apellido de la persona.     \\
+	primerApellido            & VARCHAR(50)                  &             &             & Primer apellido de la persona.     \\
 	\hline
-	segundoApellido           & TEXT                  &             &             & Segundo apellido de la persona.    \\
+	segundoApellido           & VARCHAR(50)                  &             &             & Segundo apellido de la persona.    \\
 	\hline
-	nacimientoFecha           & DATETIME              &             &             & Fecha de nacimiento de la persona. \\
+	nacimientoFecha           & DATE              &             &             & Fecha de nacimiento de la persona. \\
 	\hline
-	sexo                      & TEXT                  &             &             & Sexo de la persona.                \\
+	sexo                      & CHAR(1)                  &             &             & Sexo de la persona.                \\
 	\hline
-	email                     & TEXT                  &             &             & Email de la persona.}{Tabla Persona}
+	email                     & VARCHAR(100)                  &             &             & Email de la persona.}{Persona}

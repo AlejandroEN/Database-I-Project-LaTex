@@ -1,8 +1,8 @@
 \section{Modelo Entidad-Relación}
 \subsection{Reglas semánticas}
 \begin{itemize}
-	\item Es necesario tiene descripción, banner, nombre, fue fundado en cierta fecha y por alguien, y tiene RUC como identificador.
-	\item Una persona tiene nombres, apellidos , fecha de nacimiento, sexo, email y es identificada por su DNI.
+	\item Es necesario tener la información de la institución. Esta tiene descripción, banner, nombre, fue fundado en cierta fecha y por alguien, y tiene RUC como identificador.
+	\item Una persona tiene nombres, apellidos, fecha de nacimiento, sexo, email y es identificada por su DNI.
 	\item Un alumno es una persona, puede ser matriculado por solo un apoderado y estudia en un solo salón.
 	\item Un apoderado es una persona, tiene número de celular y puede matricular a uno o más alumnos.
 	\item Un colaborador es una persona, tiene sueldo mensual, cci, numero de celular y horas semanales de trabajo.
@@ -12,12 +12,20 @@
 	\item Un consejero es un colaborador y trabaja en una sola sede.
 	\item Un tutor es un colaborador, trabaja en una sola sede y se le asigna vigilar solo un solo salón.
 	\item Una sede tiene un id como identificador, una dirección y sus respectivas coordenadas, además de la fecha de su construcción, es dirigida por un solo director y en ella trabajan, uno o más consejeros, uno o más secretarios, uno o más tutores y uno o más profesores, y tiene uno o más salones.
-	\item Un salón tiene un id como identificador, cuenta con un número para el aforo y un nombre para la sección que realiza clases en este, además pertenece a una sola sede, es vigilado por un tutor,  en el estudian muchos alumnos y en él se dictan clases de un solo grado
+	\item Un salón tiene un id como identificador, cuenta con un número para el aforo y un nombre para la sección que realiza clases en este, además pertenece a una sola sede, es vigilado por un tutor, en el estudian muchos alumnos y en él se dictan clases de un solo grado
 	\item Un grado está identificado por un id, tiene un nombre, las clases de un grado son dictadas en uno o más salones por un profesor en cierto periodo académico y este contiene muchos cursos.
 	\item Un curso está identificado por un id, posee un nombre, está dictado por un profesor y está contenido en uno o más grados.
 	\item  Una matrícula es realizada en cierto año por un apoderado al darle los datos de un alumno a un secretario para que lo registre en un grado y una sede.
 \end{itemize}
 \subsection{Modelo Entidad-Relación}
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[width=\textwidth]{figures/modeloer.png}
+	\caption{Modelo Entidad-Relación}
+	\label{fig:my_label}
+\end{figure}
+
 \subsection{Especificaciones y consideraciones sobre el modelo}
 \entidadBullets{Entidad InformacionInstitucion}{Almacena la información más importante de cada colegio: descripción, banner, nombre, fecha de fundación, fundador y el RUC como llave primaria.}{El RUC es seleccionado como la llave primaria ya que es un identificador único y oficial para cada institución. Esto facilita la gestión administrativa y legal de la información del colegio. Esta entidad no es una superclase y no participa en relaciones de herencia.}
 \entidadBullets{Entidad Persona}{Almacena la información más importante de cada individuo, incluyendo DNI (como llave primaria), nombres, apellidos, fecha de nacimiento, sexo y email.}{El DNI es usado como llave primaria, proporcionando un medio único y eficiente para identificar a cada persona. Esta entidad actúa como una superclase que hereda a las subclases Alumno, Apoderado y Colaborador, permitiendo solapamiento y cobertura total.}

@@ -1,11 +1,13 @@
-\databaseTable{id                        & INT                   & X           &             & ID de la sede.                    \\
+\databaseTable{
+	id                        & INT                   & X           &             & ID de la sede.                    \\
 	\hline
 	coordenadaLongitud        & FLOAT8                &             &             & Longitud geográfica de la sede.   \\
 	\hline
 	coordenadaLatitud         & FLOAT8                &             &             & Latitud geográfica de la sede.    \\
 	\hline
-	direccion                 & TEXT                  &             &             & Dirección física de la sede.      \\
+	direccion                 & VARCHAR(255)                  &             &             & Dirección física de la sede.      \\
 	\hline
 	construccionFecha         & DATETIME              &             &             & Fecha de construcción de la sede. \\
 	\hline
-	directorDni               & CHAR(8)               &             & X           & DNI del director de la sede.}{Tabla Sede}
+	Director.dni               & CHAR(8)               &             & X           & DNI del director de la sede.
+}{Sede}

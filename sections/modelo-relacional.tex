@@ -1,22 +1,22 @@
 \section{Modelo Relacional}
 \subsection{Modelo Relacional}
 \begin{itemize}
-	\modeloRelacionalItem{InformacionInstitucion}{\underline{\blue{ruc}}, \blue{descripcion}, \blue{fundador}, \blue{fundacionFecha}, \blue{bannerUrl}, \blue{nombre}}
-	\modeloRelacionalItem{Persona}{\underline{\blue{dni}}, \blue{nombre}, \blue{primerApellido}, \blue{segundoApellido}, \blue{nacimientoFecha}, \blue{sexo}, \blue{email}}
-	\modeloRelacionalItem{Apoderado}{\underline{\blue{\green{Persona}.dni}}, \blue{numeroCelular}}
-	\modeloRelacionalItem{Alumno}{\underline{\blue{\green{Persona}.dni}}, nombreSeccion, Grado.id, Sede.id, Apoderado.dni}
-	\modeloRelacionalItem{Colaborador}{\underline{\blue{\green{Persona}.dni}}, sueldoMensual, cci, numeroCelular, horasSemanalesTrabajo}
-	\modeloRelacionalItem{Secretario}{\underline{\blue{\green{Colaborador}.dni}}, Sede.id}
-	\modeloRelacionalItem{Consejero}{\underline{\blue{\green{Colaborador}.dni}}, Sede.id}
-	\modeloRelacionalItem{Tutor}{\underline{\blue{\green{Colaborador}.dni}}, Sede.id}
-	\modeloRelacionalItem{Profesor}{\underline{\blue{\green{Colaborador}.dni}}}
-	\modeloRelacionalItem{ProfesorSede}{\underline{\blue{\green{Profesor}.dni}}, Sede.id}
-	\modeloRelacionalItem{Sede}{\underline{\blue{id}}, coordenadaLongitud, coordenadaLatitud, direccion, construccionFecha,Director.dni}
-	\modeloRelacionalItem{Grado}{\underline{\blue{id}}, nombre}
-	\modeloRelacionalItem{Curso}{\underline{\blue{id}}, nombre}
-	\modeloRelacionalItem{ProfesorCursoGrado}{\underline{\blue{\green{Curso}.id}}, \underline{\blue{\green{Grado}.id}}, \underline{\blue{\green{Profesor}.dni}}, periodoAcademico}
-	\modeloRelacionalItem{Salon}{aforo, \underline{\blue{nombreSeccion}}, Grado.id, \underline{\blue{\green{Sede}.id}}, Tutor.dni}
-	\modeloRelacionalItem{Matricula}{\underline{\blue{year}}, \underline{\blue{\green{Alumno}.dni}}, \underline{\blue{\green{Sede}.id}}, Grado.id, Secretario.dni}
+	\modeloRelacionalItem{\textcolor{darkGreen}{InformacionInstitucion}}{\underline{\textcolor{blue}{ruc}}, \textcolor{blue}{descripcion}, \textcolor{blue}{fundador}, \textcolor{blue}{fundacionFecha}, \textcolor{blue}{bannerUrl}, \textcolor{blue}{nombre}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Persona}}{\underline{\textcolor{blue}{dni}}, \textcolor{blue}{nombre}, \textcolor{blue}{primerApellido}, \textcolor{blue}{segundoApellido}, \textcolor{blue}{nacimientoFecha}, \textcolor{blue}{sexo}, \textcolor{blue}{email}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Apoderado}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{numeroCelular}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Alumno}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{nombreSeccion}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}, \textcolor{darkGreen}{Apoderado}.\textcolor{blue}{dni}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Colaborador}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{sueldoMensual}, \textcolor{blue}{cci}, \textcolor{blue}{numeroCelular}, \textcolor{blue}{horasSemanalesTrabajo}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Secretario}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Consejero}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Tutor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Profesor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorSede}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Sede}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{coordenadaLongitud}, \textcolor{blue}{coordenadaLatitud}, \textcolor{blue}{direccion}, \textcolor{blue}{construccionFecha}, \textcolor{darkGreen}{Director}.\textcolor{blue}{dni}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Grado}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{nombre}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Curso}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{nombre}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorCursoGrado}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Curso}.id}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Grado}.id}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \textcolor{blue}{periodoAcademico}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Salon}}{\textcolor{blue}{aforo}, \underline{\textcolor{blue}{nombreSeccion}}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Sede}.id}}, \textcolor{darkGreen}{Tutor}.\textcolor{blue}{dni}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Matricula}}{\underline{\textcolor{blue}{year}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Alumno}.dni}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Sede}.id}}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \textcolor{darkGreen}{Secretario}.\textcolor{blue}{dni}}
 \end{itemize}
 \subsection{Especificaciones de transformación}
 \subsubsection{Entidades}
@@ -48,18 +48,18 @@
 \begin{itemize}
 	\item \textbf{ProfesorCursoGrado:} Esta relación muestra que los cursos son ofrecidos en varios grados por diferentes profesores. La multiplicidad aquí refleja que un curso puede ser impartido en varios grados y que múltiples profesores pueden enseñar el mismo curso en diferentes grados.
 \end{itemize}
-\subsection{Diccionario de datos} (Alejandro)
+\subsection{Diccionario de datos}
 \input{tables/alumno-table.tex}
 \input{tables/apoderado-table.tex}
 \input{tables/colaborador-table.tex}
 \input{tables/consejero-table.tex}
 \input{tables/curso-table.tex}
-\input{tables/curso-table.tex}
 \input{tables/grado-table.tex}
-\input{tables/informacion-sobre-la-institucion-table.tex}
+\input{tables/informacion-institucion.tex}
 \input{tables/matricula-table.tex}
 \input{tables/persona-table.tex}
-\input{tables/profesor-sede-curso-grado-table.tex}
+\input{tables/profesor-curso-grado.tex}
+\input{tables/profesor-sede-table.tex}
 \input{tables/profesor-table.tex}
 \input{tables/salon-table.tex}
 \input{tables/secretario-table.tex}

@@ -1,9 +1,11 @@
-\databaseTable{personaDni                & CHAR(8)               & X           & X           & DNI del colaborador.                              \\
+\databaseTable{
+	Persona.dni             & CHAR(8)       & X & X & DNI del colaborador.                \\
 	\hline
-	sueldoMensual             & FLOAT8                &             &             & Sueldo mensual del colaborador.                   \\
+	sueldoMensual          & FLOAT8 &   &   & Sueldo mensual del colaborador.     \\
 	\hline
-	cci                       & CHAR(20)              &             &             & CCI del colaborador para transacciones bancarias. \\
+	cci                    & VARCHAR(20)   &   &   & Código de cuenta interbancaria.     \\
 	\hline
-	numeroCelular             & TEXT                  &             &             & Número de celular del colaborador.                \\
+	numeroCelular          & VARCHAR(15)   &   &   & Número de celular del colaborador.  \\
 	\hline
-	horasSemanalesTrabajo     & FLOAT8                &             &             & Horas de trabajo semanales del colaborador.}{Tabla Colaborador}
+	horasSemanalesTrabajo  & INT           &   &   & Horas semanales de trabajo.
+}{Colaborador}

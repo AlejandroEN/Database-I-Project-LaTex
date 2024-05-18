@@ -1,11 +1,11 @@
-\databaseTable{id                        & INT                   & X           &             & ID del salón.                                \\
-	\hline
+\databaseTable{
 	aforo                     & INT                   &             &             & Capacidad máxima de estudiantes en el salón. \\
 	\hline
-	gradoId                   & INT                   &             & X           & ID del grado al que pertenece el salón.      \\
+	Grado.id                   & INT                   &             &           X & ID del grado al que pertenece el salón.      \\
 	\hline
-	nombreDeSeccion           & TEXT                  &             &             & Nombre de la sección del salón.              \\
+	nombreDeSeccion           & VARCHAR(50)                  &         X    &             & Nombre de la sección del salón.              \\
 	\hline
-	tutorDni                  & CHAR(8)               &             & X           & DNI del tutor asignado al salón.             \\
+	Tutor.dni                  & CHAR(8)               &             &            X& DNI del tutor asignado al salón.             \\
 	\hline
-	sedeId                    & INT                   &             & X           & ID de la sede a la que pertenece el salón.}{Tabla Salon}
+	Sede.id                    & INT                   &             X&            X& ID de la sede a la que pertenece el salón.
+}{Salon}

@@ -1,7 +1,11 @@
 \databaseTable{
-	personaDni                & CHAR(8)               & X           & X           & DNI del alumno.                  \\
+	Persona.dni        & CHAR(8)       & X & X & DNI del alumno. \\
 	\hline
-	salonId                   & INT                   &             & X           & ID del salón asignado al alumno. \\
+	nombreSeccion     & VARCHAR(50)   &   &   & Nombre de la sección. \\
 	\hline
-	apoderadoDni              & CHAR(8)               &             & X           & DNI del apoderado del alumno.
+	Grado.id           & INT           &   & X & ID del grado. \\
+	\hline
+	Sede.id            & INT           &   & X & ID de la sede. \\
+	\hline
+	Apoderado.dni & CHAR(8)       &   & X & DNI del apoderado.
 }{Alumno}
