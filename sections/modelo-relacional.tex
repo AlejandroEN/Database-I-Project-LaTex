@@ -2,20 +2,20 @@
 \subsection{Modelo Relacional}
 \begin{itemize}
 	\modeloRelacionalItem{\textcolor{darkGreen}{InformacionInstitucion}}{\underline{\textcolor{blue}{ruc}}, \textcolor{blue}{descripcion}, \textcolor{blue}{fundador}, \textcolor{blue}{fundacionFecha}, \textcolor{blue}{bannerUrl}, \textcolor{blue}{nombre}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{Persona}}{\underline{\textcolor{blue}{dni}}, \textcolor{blue}{nombre}, \textcolor{blue}{primerApellido}, \textcolor{blue}{segundoApellido}, \textcolor{blue}{nacimientoFecha}, \textcolor{blue}{sexo}, \textcolor{blue}{email}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Persona}}{\underline{\textcolor{blue}{dni}}, \textcolor{blue}{nombres}, \textcolor{blue}{primerApellido}, \textcolor{blue}{segundoApellido}, \textcolor{blue}{nacimientoFecha}, \textcolor{blue}{sexo}, \textcolor{blue}{email}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Apoderado}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{numeroCelular}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{Alumno}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{\textcolor{darkGreen}{Salon}.nombreSeccion}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}, \textcolor{darkGreen}{Apoderado}.\textcolor{blue}{dni}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{Colaborador}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{sueldoMensual}, \textcolor{blue}{cci}, \textcolor{blue}{numeroCelular}, \textcolor{blue}{horasSemanalesTrabajo}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Alumno}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{\textcolor{darkGreen}{Salon}.nombreSeccion}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}, \textcolor{darkGreen}{Apoderado}.\textcolor{blue}{dni}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Colaborador}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{sueldoHora}, \textcolor{blue}{cci}, \textcolor{blue}{numeroCelular}, \textcolor{blue}{horasSemanalesTrabajo}, \textcolor{blue}{estaActivo}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Secretario}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Consejero}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Tutor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Profesor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorSede}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorSede}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \underline{\textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Sede}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{coordenadaLongitud}, \textcolor{blue}{coordenadaLatitud}, \textcolor{blue}{direccion}, \textcolor{blue}{construccionFecha}, \textcolor{darkGreen}{Director}.\textcolor{blue}{dni}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Grado}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{nombre}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Curso}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{nombre}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorCursoGrado}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Curso}.id}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Grado}.id}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \textcolor{blue}{periodoAcademico}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{Salon}}{\textcolor{blue}{aforo}, \underline{\textcolor{blue}{nombreSeccion}}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Sede}.id}}, \textcolor{darkGreen}{Tutor}.\textcolor{blue}{dni}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Salon}}{\underline{\textcolor{blue}{nombreSeccion}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Sede}.id}}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \textcolor{darkGreen}{Tutor}.\textcolor{blue}{dni}, \textcolor{blue}{aforo}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Matricula}}{\underline{\textcolor{blue}{year}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Alumno}.dni}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Sede}.id}}, \textcolor{darkGreen}{Grado}.\textcolor{blue}{id}, \textcolor{darkGreen}{Secretario}.\textcolor{blue}{dni}}
 \end{itemize}
 \subsection{Especificaciones de transformación}
@@ -28,13 +28,13 @@
 \end{itemize}
 \subsubsection{Entidades débiles}
 \begin{itemize}
-	\item \textbf{Salon:} Se convierte en la tabla Salon con una llave primaria compuesta por nombreSeccion, gradoId y sedeId. Dependiente de Sede, reflejando que cada salón está ubicado en una sede específica. Atributos incluyen aforo y tutorDni como foreign key.
+	\item \textbf{Salon:} Se convierte en la tabla Salon con una llave primaria compuesta por nombreSeccion y sedeId. Dependiente de Sede, reflejando que cada salón está ubicado en una sede específica. Atributos incluyen aforo, gradoId y tutorDni como foreign key.
 	\item \textbf{Matricula:} La tabla Matricula define su llave primaria compuesta por alumnoDni, sedeId, y year, lo que refleja que un alumno se puede matricular en una sede específica cada año. Las claves foráneas incluyen gradoId y secretarioDni. gradoId vincula la matrícula al grado específico al cual el alumno está inscrito, facilitando la organización académica. secretarioDni conecta cada matrícula al secretario que procesó la inscripción, integrando la administración del proceso.
 \end{itemize}
 \subsubsection{Entidades superclases y subclases}
 \begin{itemize}
 	\item \textbf{Persona:} Superclase que se transforma en la tabla Persona con dni como llave primaria. Todos los individuos (alumnos, apoderados, colaboradores) se derivan de esta tabla, heredando dni y demás atributos personales.
-	\item \textbf{Alumno, Apoderado, Colaborador:} Subclases de Persona. Cada una con sus respectivas tablas donde dni actúa como clave foránea y primaria. Alumno incluye nombreSeccion, gradoId, sedeId y apoderadoDni, mostrando la dependencia y relaciones con otras entidades.
+	\item \textbf{Alumno, Apoderado, Colaborador:} Subclases de Persona. Cada una con sus respectivas tablas donde dni actúa como clave foránea y primaria. Alumno incluye nombreSeccion, sedeId y apoderadoDni, mostrando la dependencia y relaciones con otras entidades.
 	\item \textbf{Profesor, Tutor, Secretario, Consejero, Director:} Subclases de Colaborador, cada una con roles y responsabilidades definidos, vinculados a sedes y otros elementos estructurales de la institución.
 \end{itemize}
 \subsubsection{Relaciones binarias}

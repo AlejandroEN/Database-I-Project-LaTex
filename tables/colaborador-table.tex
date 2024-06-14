@@ -1,11 +1,13 @@
 \databaseTable{
 	Persona.dni             & CHAR(8)       & X & X & DNI del colaborador.                \\
 	\hline
-	sueldoMensual          & FLOAT8 &   &   & Sueldo mensual del colaborador.     \\
+	sueldoHora             & FLOAT &   &   & Sueldo por hora del colaborador.     \\
 	\hline
-	cci                    & VARCHAR(20)   &   &   & Código de cuenta interbancaria.     \\
+	cci                    & CHAR(20)   &   &   & Código de cuenta interbancaria.     \\
 	\hline
 	numeroCelular          & VARCHAR(15)   &   &   & Número de celular del colaborador.  \\
 	\hline
-	horasSemanalesTrabajo  & INT           &   &   & Horas semanales de trabajo.
+	horasSemanalesTrabajo  & INT           &   &   & Horas semanales de trabajo.   \\
+	\hline
+	estaActivo             & BOOLEAN       &   &   & Indica si el colaborador está activo o no.
 }{Colaborador}
