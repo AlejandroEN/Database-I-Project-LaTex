@@ -1,17 +1,24 @@
 \section{Modelo Relacional}
 \subsection{Modelo Relacional}
 \begin{itemize}
-	\modeloRelacionalItem{\textcolor{darkGreen}{InformacionInstitucion}}{\underline{\textcolor{blue}{ruc}}, \textcolor{blue}{descripcion}, \textcolor{blue}{fundador}, \textcolor{blue}{fundacionFecha}, \textcolor{blue}{bannerUrl}, \textcolor{blue}{nombre}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Institucion}}{\underline{\textcolor{blue}{ruc}}, \textcolor{blue}{descripcion}, \textcolor{blue}{fundador}, \textcolor{blue}{fundacionFecha}, \textcolor{blue}{bannerUrl}, \textcolor{blue}{nombre}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Persona}}{\underline{\textcolor{blue}{dni}}, \textcolor{blue}{nombres}, \textcolor{blue}{primerApellido}, \textcolor{blue}{segundoApellido}, \textcolor{blue}{nacimientoFecha}, \textcolor{blue}{sexo}, \textcolor{blue}{email}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Apoderado}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{numeroCelular}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Alumno}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{\textcolor{darkGreen}{Salon}.nombreSeccion}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}, \textcolor{darkGreen}{Apoderado}.\textcolor{blue}{dni}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Colaborador}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Persona}.dni}}, \textcolor{blue}{sueldoHora}, \textcolor{blue}{cci}, \textcolor{blue}{numeroCelular}, \textcolor{blue}{horasSemanalesTrabajo}, \textcolor{blue}{estaActivo}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Secretario}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Consejero}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{Tutor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Director}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\begin{itemize}
+        \item Relación One To One (1:1) con la entidad Sede, usamos el constraint UNIQUE en el traspaso hacia las tablas SQL, para asegurar que un Director solo pueda ser asignado a una sede.
+    \end{itemize}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Tutor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}, \textcolor{blue}{\textcolor{darkGreen}{Salon}.nombreSeccion}, \textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}
+	\begin{itemize}
+        \item Relación One To One (1:1) con la entidad Salon, usamos el constraint UNIQUE en el traspaso hacia las tablas SQL, para asegurar que un Tutor solo pueda ser asignado a un salon.
+    \end{itemize}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Profesor}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Colaborador}.dni}}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorSede}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \underline{\textcolor{darkGreen}{Sede}.\textcolor{blue}{id}}}
-	\modeloRelacionalItem{\textcolor{darkGreen}{Sede}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{coordenadaLongitud}, \textcolor{blue}{coordenadaLatitud}, \textcolor{blue}{direccion}, \textcolor{blue}{construccionFecha}, \textcolor{darkGreen}{Director}.\textcolor{blue}{dni}}
+	\modeloRelacionalItem{\textcolor{darkGreen}{Sede}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{coordenadaLongitud}, \textcolor{blue}{coordenadaLatitud}, \textcolor{blue}{direccion}, \textcolor{blue}{construccionFecha}, \textcolor{darkGreen}{Institucion}.\textcolor{blue}{ruc}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Grado}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{nombre}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{Curso}}{\underline{\textcolor{blue}{id}}, \textcolor{blue}{nombre}}
 	\modeloRelacionalItem{\textcolor{darkGreen}{ProfesorCursoGrado}}{\underline{\textcolor{blue}{\textcolor{darkGreen}{Curso}.id}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Grado}.id}}, \underline{\textcolor{blue}{\textcolor{darkGreen}{Profesor}.dni}}, \textcolor{blue}{periodoAcademico}}
@@ -23,12 +30,12 @@
 \begin{itemize}
 	\item \textbf{Curso:} Se transforma en la tabla Curso con id como llave primaria. Cada curso tiene un nombre único. No hay dependencia directa con otras tablas a nivel de llave primaria.
 	\item \textbf{Grado:} Se convierte en la tabla Grado con id como llave primaria, y nombre como atributo. Los grados organizan los cursos y se vinculan directamente con varios salones.
-	\item \textbf{Sede:} Se transforma en la tabla Sede con id como llave primaria. Incluye atributos como direccion, coordenadaLongitud, coordenadaLatitud, y construccionFecha. Representa una ubicación física donde se imparten cursos y trabajan los colaboradores.
-	\item \textbf{InformacionInstitucion:} Se convierte en la tabla InformacionInstitucion con ruc como llave primaria. Incluye descripcion, fundador, fundacionFecha, bannerUrl, nombre. Esta entidad encapsula los datos fundamentales de la institución educativa.
+	\item \textbf{Sede:} Se transforma en la tabla Sede con id como llave primaria, además de tener al RUC de la institución como llave foránea. Incluye atributos como direccion, coordenadaLongitud, coordenadaLatitud, y construccionFecha. Representa una ubicación física donde se imparten cursos y trabajan los colaboradores.
+	\item \textbf{Institucion:} Se convierte en la tabla Institucion con ruc como llave primaria. Incluye descripcion, fundador, fundacionFecha, bannerUrl, nombre. Esta entidad encapsula los datos fundamentales de la institución educativa.
 \end{itemize}
 \subsubsection{Entidades débiles}
 \begin{itemize}
-	\item \textbf{Salon:} Se convierte en la tabla Salon con una llave primaria compuesta por nombreSeccion y sedeId. Dependiente de Sede, reflejando que cada salón está ubicado en una sede específica. Atributos incluyen aforo, gradoId y tutorDni como foreign key.
+	\item \textbf{Salon:} Se convierte en la tabla Salon con una llave primaria compuesta por nombreSeccion y sedeId. Dependiente de Sede, reflejando que cada salón está ubicado en una sede específica. Atributos incluyen aforo, gradoId como foreign key.
 	\item \textbf{Matricula:} La tabla Matricula define su llave primaria compuesta por alumnoDni, sedeId, y year, lo que refleja que un alumno se puede matricular en una sede específica cada año. Las claves foráneas incluyen gradoId y secretarioDni. gradoId vincula la matrícula al grado específico al cual el alumno está inscrito, facilitando la organización académica. secretarioDni conecta cada matrícula al secretario que procesó la inscripción, integrando la administración del proceso.
 \end{itemize}
 \subsubsection{Entidades superclases y subclases}
@@ -39,9 +46,9 @@
 \end{itemize}
 \subsubsection{Relaciones binarias}
 \begin{itemize}
-	\item \textbf{Salón y Sede:} Cada salón pertenece a una sede, representando una relación de 1 a n, donde cada sede puede contener varios salones.
-	\item \textbf{Alumno y Salón:} Relación de n a 1, cada alumno está asignado a un salón específico.
-	\item \textbf{Grado y Salón:} Relación de 1 a n, cada grado se imparte en varios salones, mostrando que un salón puede ser utilizado para diferentes grados dependiendo del horario y necesidad académica.
+	\item \textbf{Salon y Sede:} Cada salón pertenece a una sede, representando una relación de 1 a n, donde cada sede puede contener varios salones.
+	\item \textbf{Alumno y Salon:} Relación de n a 1, cada alumno está asignado a un salón específico.
+	\item \textbf{Grado y Salon:} Relación de 1 a n, cada grado se imparte en varios salones, mostrando que un salón puede ser utilizado para diferentes grados dependiendo del horario y necesidad académica.
 	\item \textbf{Profesor y Sede:} Esta relación binaria indica cómo los profesores están asignados a sedes específicas. La multiplicidad muestra que un profesor puede estar asignado a varias sedes, y cada sede puede tener múltiples profesores.
 \end{itemize}
 \subsubsection{Relaciones ternarias}
@@ -54,8 +61,9 @@
 \input{tables/colaborador-table.tex}
 \input{tables/consejero-table.tex}
 \input{tables/curso-table.tex}
+\input{tables/director-table.tex}
 \input{tables/grado-table.tex}
-\input{tables/informacion-institucion.tex}
+\input{tables/institucion-table.tex}
 \input{tables/matricula-table.tex}
 \input{tables/persona-table.tex}
 \input{tables/profesor-curso-grado.tex}
