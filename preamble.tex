@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{rotating}
 \usepackage{float}
+\usepackage{listings}
 
 \colorlet{darkGreen}{green!40!black}
 
@@ -49,3 +50,26 @@
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 \newcommand{\green}[1]{\textcolor{darkGreen}{#1}}
+
+\definecolor{otherGreen}{RGB}{0,180,0}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{gray!10}, 
+    commentstyle=\color{otherGreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{red},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
