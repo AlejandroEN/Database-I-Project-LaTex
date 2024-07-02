@@ -1,33 +1,71 @@
-\section{Optimización y experimentación} {En la siguiente sección, se evaluará el rendimiento de la base de datos mediante la ejecución de tres consultas complejas. Este análisis se llevará a cabo en varios escenarios que incluyen diferentes volúmenes de datos y se realizarán pruebas sin índices, únicamente con los índices por defecto y con los índices que consideremos más adecuados para garantizar la ejecución óptima de estas consultas. Finalmente, se procederá a analizar y comparar los resultados obtenidos.}
+\section{Optimización y experimentación}
+En la siguiente sección, se evaluará el rendimiento de la base de datos mediante la ejecución de tres consultas complejas. Este análisis se llevará a cabo en varios escenarios que incluyen diferentes volúmenes de datos y se realizarán pruebas sin índices, únicamente con los índices por defecto y con los índices que consideremos más adecuados para garantizar la ejecución óptima de estas consultas. Finalmente, se procederá a analizar y comparar los resultados obtenidos.
 \subsection{Consultas SQL para el experimento}
-\subsubsection{Descripción del tipo de consultas seleccionadas}
+\subsubsection{Descripción del tipo de consultas seleccionadas} % TODO: Revisar todas las descripciones y justificación.
+\begin{itemize}
+	\item{\textbf{Consulta 1}: La siguiente consulta obtiene el nombre, email y número de celular de los directores actuales, así como la dirección, coordenadas y fecha de construcción de las 20 sedes más antiguas construidas entre 1990 y 2010, excluyendo aquellas sedes donde el número total de profesores y alumnos exceda 400.}
+	      \begin{itemize}
+		      \item{\textbf{Justificación}: La junta directiva de la institución está planeando una remodelación en todas las sedes, pero debido al presupuesto limitado esta iniciará por las 20 sedes que más lo necesitan (las más antiguas) ordenadas descendentemente según la cantidad de salones para la correcta gestión de recursos. Por esto se necesita conocer el nombre, email y número de celular del director actual para coordinar la visita de evaluación en la ubicación de la sede. Para intentar disminuir lo más posible la interrupción de clases para los alumnos, se decidió que si el número de matriculados de la sede en el presente año en progreso está en el rango de 200 a 300, se debe omitir esta sede y escoger la siguiente.}
+	      \end{itemize}
+	\item{\textbf{Consulta 2}: Se desea conocer el nombre completo, bonificación, código de cuenta interbancaria e email de los colaboradores identificados como activos actualmente a los que les corresponde el bono que ofrece la institución. Para calcular la bonificación debemos tomar en cuenta que las sedes que este año están cumpliendo un aniversario múltiplo de 10 (sin contar al 0) ofrecen un bono de 5\% respecto al pago mensual (el sueldo mensual se obtiene cuadruplicando la multiplicación del pago por hora por las horas semanales) para sus colaboradores que nacieron entre 1960 y 1980.}
+	      \begin{itemize}
+		      \item{\textbf{Justificación}: La institución tiene una política que consiste en que cada 10 años desde la construcción de cada sede se ofrece un bono de 5\% respecto al pago mensual, a los colaboradores activos mayores que trabajan en esa sede. Para obtener el monto de bonificación se debe cuadruplicar la multiplicación de la remuneración establecida por hora por la cantidad de horas semanales laboradas. De existir un colaborador que labore en más de una sede se debe evaluar la condición del aniversario para todas las sedes; si se cumple la condición en más de una, debemos multiplicar el bono por el número de sedes en las que se cumpla. El área de finanzas debe realizar el desembolso de este bono; por ello, se necesita conocer el nombre completo, monto respectivo, código de cuenta interbancaria para realizar la transferencia de este, y su email para enviar el comprobante de pago. }
+	      \end{itemize}
+	\item{\textbf{Consulta 3}: Se desea conocer el nombre, primer apellido, segundo apellido, sexo e email de los alumnos menores de 18 años cuyo apoderado sea un colaborador registrado como activo, que trabaja a tiempo completo (más de 48 horas semanales) y cuyo sueldo mensual sea menor a 2000 soles (el sueldo mensual se obtiene cuadruplicando la multiplicación del pago por hora por las horas semanales). Además deben haber transcurrido como mínimo 2 años desde la matrícula del alumno.}
+	      \begin{itemize}
+		      \item{\textbf{Justificacion}: La institución educativa va a implementar la iniciativa de ofrecer un descuento especial en el pago mensual a los alumnos menores de 18 años cuyo apoderado sea un colaborador de la institución, siempre y cuando esté registrado como activo, labore a tiempo completo, su sueldo mensual (resultado de cuadruplicar la multiplicación de sueldo por hora, por las horas semanales) sea menor a 2000. El alumno debe haber estado matriculado por lo menos 2 años antes del actual.}
+	      \end{itemize}
+\end{itemize}
 \subsubsection{Implementación de consultas en SQL}
-\subsubsection*{Consulta 1}
-\lstinputlisting[language=SQL, caption={Consulta 1}]{code-snippets/query_1.sql.}
-\subsubsection*{Consulta 2}
-\lstinputlisting[language=SQL, caption={Consulta 2}]{code-snippets/query_2.sql}
-\subsubsection*{Consulta 3}
-\lstinputlisting[language=SQL, caption={Consulta 3}]{code-snippets/query_3.sql}
-
+\begin{itemize}
+	\item{\textbf{Consulta 1}:
+	      \lstinputlisting[language=SQL]{code-snippets/query-1/query_1.sql.}}
+	\item{\textbf{Consulta 2}:
+	      \lstinputlisting[language=SQL]{code-snippets/query-2/query_2.sql}}
+	\item{\textbf{Consulta 3}:
+	      \lstinputlisting[language=SQL]{code-snippets/query-3/query_3.sql}}
+\end{itemize}
 \subsection{Metodología del experimento}
-
+\begin{sloppypar}
+	Primero, creamos cuatro esquemas: ``mil\_datos'', ``diezmil\_datos'', ``cienmil\_datos'' y ``millon\_datos''. Cada uno de estos esquemas contiene la cantidad de datos que su nombre indica.
+\end{sloppypar}
+\lstinputlisting[language=SQL]{code-snippets/create_schemas.sql}
+Luego, ejecutaremos cada consulta en cada uno de los esquemas, primero, sin índices, segundo, con los índices por defecto y, finalmente, con los índices por defecto más los índices que consideremos más adecuados para garantizar la ejecución óptima de estas consultas.\\
+Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejercución de cada consulta en cada uno de los escenarios mencionados.
 \subsection{Optimización de consultas}
-\subsubsection{Planes de índices para Consulta 1}
-\lstinputlisting[language=SQL]{code-snippets/query_1_index.sql}
-\subsubsection{Planes de índices para Consulta 2}
-\lstinputlisting[language=SQL]{code-snippets/query_2_index.sql}
-\subsubsection{Planes de índices para Consulta 3}
-\lstinputlisting[language=SQL]{code-snippets/query_3_index.sql}
-
+\subsubsection{Planes de índices para la primera consulta}
+\begin{itemize}
+	\item{Ejecución sin índices}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+	\item{Ejercución con índices por defecto}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+	\item{Ejecución con índices por defecto más índices personalizados}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+\end{itemize}
+\subsubsection{Planes de índices para la segunda consulta}
+\begin{itemize}
+	\item{Ejecución sin índices}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+	\item{Ejercución con índices por defecto}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+	\item{Ejecución con índices por defecto más índices personalizados}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+\end{itemize}
+\subsubsection{Planes de índices para la tercera consulta}
+\begin{itemize}
+	\item{Ejecución sin índices}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+	\item{Ejercución con índices por defecto}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+	\item{Ejecución con índices por defecto más índices personalizados}
+	      \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+\end{itemize}
 \subsection{Plataforma de pruebas}
-
 \subsection{Medición de tiempos}
 \subsubsection{Sin índices}
 \subsubsection{Con índices}
-
 \subsection{Resultados}
 \subsubsection{Consulta 1}
 \subsubsection{Consulta 2}
 \subsubsection{Consulta 3}
-
 \section{Análisis y discusión}

@@ -1,5 +1,3 @@
------------------------------TRIGGERS------------------------------
-
 CREATE OR REPLACE FUNCTION function_check_alumno_overlapping_colaborador_apoderado() RETURNS TRIGGER AS
 $$
 BEGIN
@@ -137,7 +135,7 @@ CREATE TRIGGER trigger_check_profesor_esta_activo
     FOR EACH ROW
 EXECUTE FUNCTION function_check_colaborador_esta_activo();
 
----- 
+----
 
 CREATE OR REPLACE FUNCTION gestionar_director_reasignacion() RETURNS TRIGGER AS
 $$
@@ -161,7 +159,7 @@ CREATE TRIGGER trigger_gestionar_director_reasignacion
     WHEN (old.dni IS DISTINCT FROM new.dni)
 EXECUTE FUNCTION gestionar_director_reasignacion();
 
----- 
+----
 
 CREATE OR REPLACE FUNCTION function_check_matricula_year() RETURNS TRIGGER AS
 $$

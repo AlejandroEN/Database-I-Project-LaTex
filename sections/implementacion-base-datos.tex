@@ -1,6 +1,7 @@
 \section{Implementación de la base de datos}
-\subsection{Creacíon de tablas en PostgreSQL}{\lstinputlisting[language=SQL, caption={Archivo code-snippets/creacion-tablas.sql}]{code-snippets/create_tables.sql}}
-{\lstinputlisting[language=SQL, caption={Archivo code-snippets/triggers.sql}]{code-snippets/triggers.sql}}
-
-\subsection{Carga de datos} {Durante la carga de datos en los esquemas de 1k, 10k, 100k y 1m, se implementó la simulación de datos faltantes en archivos CSV, seguida de su inserción mediante Docker como tuplas en lugar de listas. Este enfoque fue diseñado para optimizar las operaciones de lectura desde los contenedore. El propósito principal de esta práctica es facilitar el acceso inmediato a la base de datos simplemente descargando la imagen Docker, asegurando así una configuración ágil y eficiente del entorno de desarrollo.}
-\subsection{Simulación de datos faltantes} {Para simular datos faltantes, se desarrolló un script en Python que utilizó la biblioteca externa Faker junto con la biblioteca nativa random para generar datos aleatorios en los archivos CSV mencionados. Estos datos fueron posteriormente insertados mediante un bulk insert, optimizando así el proceso de carga masiva y garantizando la diversidad y precisión de los datos simulados.}
+\subsection{Creacíon de tablas en PostgreSQL}
+\lstinputlisting[language=SQL]{code-snippets/create_tables.sql}
+\subsection{Creación de triggers en PostgreSQL}
+\lstinputlisting[language=SQL]{code-snippets/triggers.sql}
+\subsection{Carga de datos}{Durante la carga de datos en los esquemas de 1k, 10k, 100k y 1m, se implementó la simulación de datos faltantes en archivos CSV, seguida de su inserción mediante Docker como tuplas en lugar de listas. Este enfoque fue diseñado para optimizar las operaciones de lectura desde los contenedore. El propósito principal de esta práctica es facilitar el acceso inmediato a la base de datos simplemente descargando la imagen Docker, asegurando así una configuración ágil y eficiente del entorno de desarrollo.}
+\subsection{Simulación de datos faltantes}{Para simular datos faltantes, se desarrolló un script en Python que utilizó la biblioteca externa Faker junto con la biblioteca nativa random para generar datos aleatorios en los archivos CSV mencionados. Estos datos fueron posteriormente insertados mediante un bulk insert, optimizando así el proceso de carga masiva y garantizando la diversidad y precisión de los datos simulados.}

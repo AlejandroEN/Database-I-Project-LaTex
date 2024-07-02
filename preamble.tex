@@ -11,8 +11,31 @@
 \usepackage{rotating}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{xparse}
 
 \colorlet{darkGreen}{green!40!black}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{gray!10},
+	commentstyle=\color{blue},
+	keywordstyle=\color{darkGreen},
+	numberstyle=\tiny\color{gray},
+	stringstyle=\color{red},
+	identifierstyle=\color{blue},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \newcommand{\databaseTable}[2]{
 	\begin{table}[H]
@@ -29,48 +52,37 @@
 	\end{table}
 }
 
-\newcommand{\entidadBullets}[3]
-{
+\newcommand{\entidadBullets}[3]{
 	\subsubsection{#1}
 	\begin{sloppy}
 		\begin{itemize}
-			\item Especificaciones:
-			      #2
-			\item Consideraciones:
-			      #3
+			\item{Especificaciones: #2}
+			\item{Consideraciones: #3}
 		\end{itemize}
 	\end{sloppy}
 }
 
-\newcommand{\modeloRelacionalItem}[2]
-{
-	\item \textcolor{darkGreen}{#1}(#2)
+\newcommand{\modeloRelacionalItem}[2]{
+	\item \textcolor{darkGreen}{#1} (#2)
 }
 
 \newcommand{\blue}[1]{\textcolor{blue}{#1}}
 
 \newcommand{\green}[1]{\textcolor{darkGreen}{#1}}
 
-\definecolor{otherGreen}{RGB}{0,180,0}
-
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{gray!10}, 
-    commentstyle=\color{blue},
-    keywordstyle=\color{otherGreen},
-    numberstyle=\tiny\color{gray},
-    stringstyle=\color{red},
-	identifierstyle=\color{blue},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2
+\newcommand{\queryExecutionPlanItem}[2]{
+	\begin{itemize}
+		\item{#1:}
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{#2}
+	\end{center}
 }
 
-\lstset{style=mystyle}
+\newcommand{\queryExecutionPlanGroup}[5]{
+	\lstinputlisting[language=SQL]{#1}
+	\queryExecutionPlanItem{Para mil datos}{#2}
+	\queryExecutionPlanItem{Para diez mil datos}{#3}
+	\queryExecutionPlanItem{Para cien mil datos}{#4}
+	\queryExecutionPlanItem{Para un millón de datos}{#5}
+}

@@ -1,5 +1,3 @@
-------------------------------TABLAS-------------------------------
-
 CREATE TABLE institucion
 (
     ruc             CHAR(11) PRIMARY KEY,

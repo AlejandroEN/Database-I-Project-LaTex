@@ -1,33 +1,33 @@
 \section{Modelo Entidad-Relación}
 \subsection{Reglas semánticas}
 {\smaller[0.5]
-\begin{itemize}
-	\item Una institución tiene descripción, banner, nombre, fue fundado en cierta fecha y por alguien, y tiene RUC como identificador.
-	\item Una institución tiene al menos una sede, y en ella trabajan colaboradores y se dictan clases.
-	\item Una persona tiene nombres, apellidos, fecha de nacimiento, sexo, email y es identificada por su DNI.
-	\item Un alumno es una persona, puede ser matriculado por solo un apoderado y estudia en un solo salón.
-	\item Un apoderado es una persona, tiene número de celular y puede matricular a uno o más alumnos.
-	\item Un colaborador es una persona, tiene sueldo por hora, cci, numero de celular, horas semanales de trabajo y necesitamos saber si está activo o no.
-	\item Un profesor es un colaborador y trabaja en una o más sedes enseñando uno o más cursos en uno o más grados en cierto periodo académico.
-	\item Un secretario es un colaborador y trabaja en una sola sede.
-	\item Un director es un colaborador y dirige una sola sede.
-	\item Un consejero es un colaborador y trabaja en una sola sede.
-	\item Un tutor es un colaborador, trabaja en una sola sede y se le asigna vigilar un solo salón.
-	\item Una sede tiene un id como identificador, una dirección y sus respectivas coordenadas, además de la fecha de su construcción, es dirigida por un solo director y en ella trabajan, uno o más consejeros, uno o más secretarios, uno o más tutores y uno o más profesores, y tiene uno o más salones.
-	\item Un salón tiene un nombre de sección como llave parcial, cuenta con un número para el aforo, además, pertenece a una sola sede, es vigilado por un tutor, en él estudian muchos alumnos y en él se dictan clases de un solo grado.
-	\item Un grado está identificado por un id, tiene un nombre, las clases de un grado son dictadas en uno o más salones por un profesor en cierto periodo académico y este contiene muchos cursos.
-	\item Un curso está identificado por un id, posee un nombre, está dictado por un profesor y está contenido en uno o más grados.
-	\item Una matrícula es realizada en cierto año por un apoderado al darle los datos de un alumno a un secretario para que lo registre en un grado y una sede.
-\end{itemize}}
+	\begin{itemize}
+		\item Una institución tiene descripción, banner, nombre, fue fundado en cierta fecha y por alguien, y tiene RUC como identificador.
+		\item Una institución tiene al menos una sede, y en ella trabajan colaboradores y se dictan clases.
+		\item Una persona tiene nombres, apellidos, fecha de nacimiento, sexo, email y es identificada por su DNI.
+		\item Un alumno es una persona, puede ser matriculado por solo un apoderado y estudia en un solo salón.
+		\item Un apoderado es una persona, tiene número de celular y puede matricular a uno o más alumnos.
+		\item Un colaborador es una persona, tiene sueldo por hora, cci, numero de celular, horas semanales de trabajo y necesitamos saber si está activo o no.
+		\item Un profesor es un colaborador y trabaja en una o más sedes enseñando uno o más cursos en uno o más grados en cierto periodo académico.
+		\item Un secretario es un colaborador y trabaja en una sola sede.
+		\item Un director es un colaborador y dirige una sola sede.
+		\item Un consejero es un colaborador y trabaja en una sola sede.
+		\item Un tutor es un colaborador, trabaja en una sola sede y se le asigna vigilar un solo salón.
+		\item Una sede tiene un id como identificador, una dirección y sus respectivas coordenadas, además de la fecha de su construcción, es dirigida por un solo director y en ella trabajan, uno o más consejeros, uno o más secretarios, uno o más tutores y uno o más profesores, y tiene uno o más salones.
+		\item Un salón tiene un nombre de sección como llave parcial, cuenta con un número para el aforo, además, pertenece a una sola sede, es vigilado por un tutor, en él estudian muchos alumnos y en él se dictan clases de un solo grado.
+		\item Un grado está identificado por un id, tiene un nombre, las clases de un grado son dictadas en uno o más salones por un profesor en cierto periodo académico y este contiene muchos cursos.
+		\item Un curso está identificado por un id, posee un nombre, está dictado por un profesor y está contenido en uno o más grados.
+		\item Una matrícula es realizada en cierto año por un apoderado al darle los datos de un alumno a un secretario para que lo registre en un grado y una sede.
+	\end{itemize}}
 \newpage
 \subsection{Modelo Entidad-Relación}
 \begin{figure}[H]
-    \centering
-    \begin{turn}{270}
-        \includegraphics[width=\textheight, height=0.6\textheight]{figures/modeloer_renovado.png}
-    \end{turn}
-    \caption{Modelo Entidad-Relación}
-    \label{fig:my_label}
+	\centering
+	\begin{turn}{270}
+		\includegraphics[width=\textheight, height=0.6\textheight]{figures/modeloer-latest.png}
+	\end{turn}
+	\caption{Modelo Entidad-Relación}
+	\label{fig:my_label}
 \end{figure}
 \newpage
 \subsection{Especificaciones y consideraciones sobre el modelo}
