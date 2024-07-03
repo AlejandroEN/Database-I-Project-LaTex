@@ -3,31 +3,31 @@ En la siguiente sección, se evaluará el rendimiento de la base de datos median
 \subsection{Consultas SQL para el experimento}
 \subsubsection{Descripción del tipo de consultas seleccionadas} % TODO: Revisar todas las descripciones y justificación.
 \begin{itemize}
-    \item{\textbf{Consulta 1}: La siguiente consulta obtiene el nombre, email y número de celular de los directores actuales, así como la dirección, coordenadas y fecha de construcción de las 20 sedes más antiguas construidas entre 1990 y 2010, excluyendo aquellas sedes donde el número total de profesores y alumnos exceda 400.}
-          \begin{itemize}
-              \item{\textbf{Justificación}: La institución educativa está en un proceso de planificación para realizar renovaciones y mantenimiento en sus sedes. Se ha decidido comenzar con las sedes construidas entre los años 1990 y 2010, ya que estas son las que han demostrado tener más necesidad de atención. Para minimizar las interrupciones en las actividades escolares, se ha establecido que solo se seleccionarán aquellas sedes donde la suma del número de profesores y alumnos no exceda 400. Además, se requiere la información de los directores de estas sedes para coordinar las visitas de evaluación y supervisión.}
-          \end{itemize}
-    \item{\textbf{Consulta 2}: Se desea conocer el nombre completo, bonificación, código de cuenta interbancaria e email de los colaboradores identificados como activos actualmente a los que les corresponde el bono que ofrece la institución. Para calcular la bonificación debemos tomar en cuenta que las sedes que este año están cumpliendo un aniversario múltiplo de 10 (sin contar al 0) ofrecen un bono de 5\% respecto al pago mensual (el sueldo mensual se obtiene cuadruplicando la multiplicación del pago por hora por las horas semanales) para sus colaboradores que nacieron entre 1960 y 1980.}
-          \begin{itemize}
-              \item{\textbf{Justificación}: La institución educativa tiene una política que consiste en que cada 10 años desde la construcción de cada sede se ofrece un bono de 5\% respecto al pago mensual, a los colaboradores activos mayores que trabajan en esa sede. Para obtener el monto de bonificación se debe cuadruplicar la multiplicación de la remuneración establecida por hora por la cantidad de horas semanales laboradas. De existir un colaborador que labore en más de una sede se debe evaluar la condición del aniversario para todas las sedes; si se cumple la condición en más de una, debemos multiplicar el bono por el número de sedes en las que se cumpla. El área de finanzas debe realizar el desembolso de este bono; por ello, se necesita conocer el nombre completo, monto respectivo, código de cuenta interbancaria para realizar la transferencia de este, y su email para enviar el comprobante de pago. }
-          \end{itemize}
-    \item{\textbf{Consulta 3}: Se desea conocer el nombre, primer apellido, segundo apellido, sexo e email de los alumnos menores de 18 años cuyo apoderado sea un colaborador registrado como activo, que trabaja a tiempo completo (más de 48 horas semanales) y cuyo sueldo mensual sea menor a 2000 soles (el sueldo mensual se obtiene cuadruplicando la multiplicación del pago por hora por las horas semanales). Además deben haber transcurrido como mínimo 2 años desde la matrícula del alumno.}
-          \begin{itemize}
-              \item{\textbf{Justificacion}: La institución educativa implementará la iniciativa de ofrecer un descuento especial en el pago mensual a los alumnos menores de edad cuyo apoderado sea un colaborador activo de la institución que labore a tiempo completo y su sueldo mensual sea menor a 2000. El alumno debe haber estado matriculado por lo menos 2 años antes del actual.}
-          \end{itemize}
+      \item{\textbf{Consulta 1}: La siguiente consulta obtiene el nombre, email y número de celular de los directores actuales, así como la dirección, coordenadas y fecha de construcción de las 20 sedes más antiguas construidas entre 1990 y 2010, excluyendo aquellas sedes donde el número total de profesores y alumnos exceda 400.}
+            \begin{itemize}
+                  \item{\textbf{Justificación}: La institución educativa está en un proceso de planificación para realizar renovaciones y mantenimiento en sus sedes. Se ha decidido comenzar con las sedes construidas entre los años 1990 y 2010, ya que estas son las que han demostrado tener más necesidad de atención. Para minimizar las interrupciones en las actividades escolares, se ha establecido que solo se seleccionarán aquellas sedes donde la suma del número de profesores y alumnos no exceda 400. Además, se requiere la información de los directores de estas sedes para coordinar las visitas de evaluación y supervisión.}
+            \end{itemize}
+      \item{\textbf{Consulta 2}: Se desea conocer el nombre completo, bonificación, código de cuenta interbancaria e email de los colaboradores identificados como activos actualmente a los que les corresponde el bono que ofrece la institución. Para calcular la bonificación debemos tomar en cuenta que las sedes que este año están cumpliendo un aniversario múltiplo de 10 (sin contar al 0) ofrecen un bono de 5\% respecto al pago mensual (el sueldo mensual se obtiene cuadruplicando la multiplicación del pago por hora por las horas semanales) para sus colaboradores que nacieron entre 1960 y 1980.}
+            \begin{itemize}
+                  \item{\textbf{Justificación}: La institución educativa tiene una política que consiste en que cada 10 años desde la construcción de cada sede se ofrece un bono de 5\% respecto al pago mensual, a los colaboradores activos mayores que trabajan en esa sede. Para obtener el monto de bonificación se debe cuadruplicar la multiplicación de la remuneración establecida por hora por la cantidad de horas semanales laboradas. De existir un colaborador que labore en más de una sede se debe evaluar la condición del aniversario para todas las sedes; si se cumple la condición en más de una, debemos multiplicar el bono por el número de sedes en las que se cumpla. El área de finanzas debe realizar el desembolso de este bono; por ello, se necesita conocer el nombre completo, monto respectivo, código de cuenta interbancaria para realizar la transferencia de este, y su email para enviar el comprobante de pago. }
+            \end{itemize}
+      \item{\textbf{Consulta 3}: Se desea conocer el nombre, primer apellido, segundo apellido, sexo e email de los alumnos menores de 18 años cuyo apoderado sea un colaborador registrado como activo, que trabaja a tiempo completo (más de 48 horas semanales) y cuyo sueldo mensual sea menor a 2000 soles (el sueldo mensual se obtiene cuadruplicando la multiplicación del pago por hora por las horas semanales). Además deben haber transcurrido como mínimo 2 años desde la matrícula del alumno.}
+            \begin{itemize}
+                  \item{\textbf{Justificacion}: La institución educativa implementará la iniciativa de ofrecer un descuento especial en el pago mensual a los alumnos menores de edad cuyo apoderado sea un colaborador activo de la institución que labore a tiempo completo y su sueldo mensual sea menor a 2000. El alumno debe haber estado matriculado por lo menos 2 años antes del actual.}
+            \end{itemize}
 \end{itemize}
 \subsubsection{Implementación de consultas en SQL}
 \begin{itemize}
-    \item{\textbf{Consulta 1}:
-          \lstinputlisting[language=SQL]{code-snippets/query-1/query_1.sql.}}
-    \item{\textbf{Consulta 2}:
-          \lstinputlisting[language=SQL]{code-snippets/query-2/query_2.sql}}
-    \item{\textbf{Consulta 3}:
-          \lstinputlisting[language=SQL]{code-snippets/query-3/query_3.sql}}
+      \item{\textbf{Consulta 1}:
+            \lstinputlisting[language=SQL]{code-snippets/query-1/query_1.sql.}}
+      \item{\textbf{Consulta 2}:
+            \lstinputlisting[language=SQL]{code-snippets/query-2/query_2.sql}}
+      \item{\textbf{Consulta 3}:
+            \lstinputlisting[language=SQL]{code-snippets/query-3/query_3.sql}}
 \end{itemize}
 \subsection{Metodología del experimento}
 \begin{sloppypar}
-    Primero, creamos cuatro esquemas: ``mil\_datos'', ``diezmil\_datos'', ``cienmil\_datos'' y ``millon\_datos''. Cada uno de estos esquemas contiene la cantidad de datos que su nombre indica.
+      Primero, creamos cuatro esquemas: ``mil\_datos'', ``diezmil\_datos'', ``cienmil\_datos'' y ``millon\_datos''. Cada uno de estos esquemas contiene la cantidad de datos que su nombre indica.
 \end{sloppypar}
 \lstinputlisting[language=SQL]{code-snippets/create_schemas.sql}
 Luego, ejecutaremos cada consulta en cada uno de los esquemas, primero, sin índices, segundo, con los índices por defecto y, finalmente, con los índices por defecto más los índices que consideremos más adecuados para garantizar la ejecución óptima de estas consultas.\\
@@ -35,53 +35,36 @@ Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejerc
 \subsection{Optimización de consultas}
 \subsubsection{Planes de índices para la primera consulta}
 \begin{itemize}
-    \item{Ejecución sin índices}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
-    \item{Ejercución con índices por defecto}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
-    \item{Ejecución con índices por defecto más índices personalizados}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+      \item{Ejecución sin índices}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+      \item{Ejercución con índices por defecto}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+      \item{Ejecución con índices por defecto más índices personalizados}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
 \end{itemize}
 \subsubsection{Planes de índices para la segunda consulta}
 \begin{itemize}
-    \item{Ejecución sin índices}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
-    \item{Ejercución con índices por defecto}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
-    \item{Ejecución con índices por defecto más índices personalizados}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+      \item{Ejecución sin índices}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+      \item{Ejercución con índices por defecto}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+      \item{Ejecución con índices por defecto más índices personalizados}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
 \end{itemize}
 \subsubsection{Planes de índices para la tercera consulta}
 \begin{itemize}
-    \item{Ejecución sin índices}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
-    \item{Ejercución con índices por defecto}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
-    \item{Ejecución con índices por defecto más índices personalizados}
-          \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+      \item{Ejecución sin índices}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+      \item{Ejercución con índices por defecto}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+      \item{Ejecución con índices por defecto más índices personalizados}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
 \end{itemize}
 \subsection{Plataforma de pruebas}
 \input{tables/plataforma-de-prueba-table.tex}
 \subsection{Medición de tiempos}
 \subsubsection{Sin índices}
-\begin{table}[htb]
-    \centering
-    \label{tab:consulta1_sin_indices}
-    \begin{tabular}{ccrrrr}
-        \hline
-        Ejecución           & 1k          & 10k         & 100k        & 1m          & \\ \hline
-        1                   & 3.543       & 79.016      & 655.273     & 3242.406    & \\
-        2                   & 3.968       & 42.911      & 495.606     & 1742.40     & \\
-        3                   & 4.498       & 34.438      & 435.457     & 1753.317    & \\
-        4                   & 4.151       & 31.497      & 433.781     & 1580.661    & \\
-        5                   & 3.927       & 60.971      & 452.772     & 1421.85     & \\
-        \hline
-        Promedio            & 4.0174      & 49.7666     & 494.5778    & 1948.1268   & \\
-        Desviación Estándar & 0.348027729 & 19.98004938 & 93.22452641 & 736.1099453 & \\
-        \hline
-    \end{tabular}
-    \caption{Rendimiento de la consulta 1 sin índices}
-\end{table}
+\input{tables/medicion-de-tiempo-unindexing-tables.tex}
 \subsubsection{Con índices por defecto}
 \subsubsection{Con índices por defecto más índices perssonalizados}
 
