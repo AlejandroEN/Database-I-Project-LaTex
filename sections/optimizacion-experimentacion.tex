@@ -36,9 +36,9 @@ Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejerc
 \subsubsection{Planes de índices para la primera consulta}
 \begin{itemize}
       \item{Ejecución sin índices}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+            \queryExecutionPlanGroup{code-snippets/query-1/query_1_unindexed.sql}{figures/query-1/query_1_unindexed_mil_datos.png}{figures/query-1/query_1_unindexed_diezmil_datos.png}{figures/query-1/query_1_unindexed_cienmil_datos.png}{figures/query-1/query_1_unindexed_cienmil_datos.png}
       \item{Ejercución con índices por defecto}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+            \queryExecutionPlanGroup{code-snippets/query-1/query_1_indexed_default.sql}{figures/query-1/query_1_indexed_default_mil_datos.png}{figures/query-1/query_1_indexed_default_diezmil_datos.png}{figures/query-1/query_1_indexed_default_cienmil_datos.png}{figures/query-1/query_1_indexed_default_millon_datos.png}
       \item{Ejecución con índices por defecto más índices personalizados}
             \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
 \end{itemize}
@@ -53,12 +53,17 @@ Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejerc
 \end{itemize}
 \subsubsection{Planes de índices para la tercera consulta}
 \begin{itemize}
-      \item{Ejecución sin índices}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
-      \item{Ejercución con índices por defecto}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
-      \item{Ejecución con índices por defecto más índices personalizados}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+	\item{Ejecución sin índices}
+		\queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+	\item{Ejecución con índices por defecto}
+		\queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+	\item{Ejecución con índices por defecto más índices personalizados}
+		\queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+	\item{Explicación de la consulta}
+	\begin{itemize}
+		\item {Con índices}
+		\item {Sin índices}
+	\end{itemize}
 \end{itemize}
 \subsection{Plataforma de pruebas}
 \input{tables/plataforma-de-prueba-table.tex}
@@ -69,9 +74,13 @@ Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejerc
 \input{tables/medicion-tiempo-indexed-default-tables.tex}
 \subsubsection{Con índices por defecto más índices perssonalizados}
 \input{tables/medicion-tiempo-indexed-custom.tex}
-
-\subsection{Resultados}
+\subsection{Resultados, análisis y discusión}
 \subsubsection{Consulta 1}
+% TODO: Imagen generada en Python
+% TODO: Análisis y discusión
 \subsubsection{Consulta 2}
+% TODO: Imagen generada en Python
+% TODO: Análisis y discusión
 \subsubsection{Consulta 3}
-\section{Análisis y discusión}
+% TODO: Imagen generada en Python
+% TODO: Análisis y discusión
