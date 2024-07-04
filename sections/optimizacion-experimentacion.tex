@@ -36,34 +36,47 @@ Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejerc
 \subsubsection{Planes de índices para la primera consulta}
 \begin{itemize}
       \item{Ejecución sin índices}
-            \queryExecutionPlanGroup{code-snippets/query-1/query_1_unindexed.sql}{figures/query-1/query_1_unindexed_mil_datos.png}{figures/query-1/query_1_unindexed_diezmil_datos.png}{figures/query-1/query_1_unindexed_cienmil_datos.png}{figures/query-1/query_1_unindexed_cienmil_datos.png}
+            \queryExecutionPlanGroup{code-snippets/query-1/query_1_unindexed.sql}{figures/query-1/query_1_unindexed_mil_datos.png}{figures/query-1/query_1_unindexed_diezmil_datos.png}{figures/query-1/query_1_unindexed_cienmil_datos.png}{figures/query-1/query_1_unindexed_millon_datos.png}
       \item{Ejercución con índices por defecto}
             \queryExecutionPlanGroup{code-snippets/query-1/query_1_indexed_default.sql}{figures/query-1/query_1_indexed_default_mil_datos.png}{figures/query-1/query_1_indexed_default_diezmil_datos.png}{figures/query-1/query_1_indexed_default_cienmil_datos.png}{figures/query-1/query_1_indexed_default_millon_datos.png}
       \item{Ejecución con índices por defecto más índices personalizados}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+            \queryExecutionPlanGroup{code-snippets/query-1/query_1_indexed_custom.sql}{figures/query-1/query_1_indexed_custom_mil_datos.png}{figures/query-1/query_1_indexed_custom_diezmil_datos.png}{figures/query-1/query_1_indexed_custom_cienmil_datos.png}{figures/query-1/query_1_indexed_custom_millon_datos.png}
+      \item{Descripción de las ejecuciones}
+      \begin{itemize}
+            \item {\textbf{Sin índices}: Aquí va el texto}
+            \item {\textbf{Con índices por defecto}: Aquí va el texto}
+            \item {\textbf{Con índices por defecto más índices personalizados}: Aquí va el texto}
+      \end{itemize}
 \end{itemize}
 \subsubsection{Planes de índices para la segunda consulta}
 \begin{itemize}
       \item{Ejecución sin índices}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_mil_datos.png} % TODO: Revisar la ruta de la imagen 1 millon
       \item{Ejercución con índices por defecto}
             \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
       \item{Ejecución con índices por defecto más índices personalizados}
-            \queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+            \queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_custom.sql}{figures/query-2/query_2_indexed_custom_mil_datos.png}{figures/query-2/query_2_indexed_custom_diezmil_datos.png}{figures/query-2/query_2_indexed_custom_cienmil_datos.png}{figures/query-2/query_2_indexed_custom_millon_datos.png}
+      \item{Descripción de las ejecuciones}
+      \begin{itemize}
+            \item {\textbf{Sin índices}: Los planes de consulta sin índices para las tablas de 1k y 1M son similares entre sí, con una operación extra de Gather en el millón de datos, mientras que los planes de 10k y 100k son similares pero difieren en comparación con los de 1k y 1M. Para 1k datos, se inicia con un Nested Loop Inner Join entre director y colaborador, seguido de otro Nested Loop Inner Join con persona y luego con sede. Las filas de sede se filtran usando un Seq Scan basado en sede.construccion\_fecha, y se ejecutan subconsultas ``SubQuery Scan'' para contar las filas de profesor\_sede y alumno, limitando el resultado a aquellos donde la suma no exceda de 400. Estos resultados se ordenan ``Sort'' por sede.construccion\_fecha y se limita la salida a 20 filas. Para 10k datos, se cambia el orden, comenzando con un Nested Loop Inner Join entre director y colaborador, seguido de un Seq Scan sobre sede y un Nested Loop Inner Join con persona, aplicando las mismas subconsultas y limitando los resultados de manera similar. En 100k datos, el plan es similar al de 10k, pero se utiliza Parallel Seq Scan para manejar el mayor volumen de datos eficientemente, manteniendo las subconsultas y la ordenación de resultados. En el millón de datos, se observan los mismos pasos que en 100k, pero con el uso adicional de Parallel Seq Scan y Gather después del join para consolidar los resultados de las operaciones paralelas. En todos los casos, los planes dependen de Nested Loop Inner Join y Seq Scan, pero se aprovechan de operaciones paralelas a medida que el tamaño de los datos aumenta.}
+            \item {\textbf{Con índices por defecto}: Aquí va el texto}
+            \item {\textbf{Con índices por defecto más índices personalizados}: Aquí va el texto}
+      \end{itemize}
 \end{itemize}
 \subsubsection{Planes de índices para la tercera consulta}
 \begin{itemize}
 	\item{Ejecución sin índices}
-		\queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
+		\queryExecutionPlanGroup{code-snippets/query-3/query_3_unindexed.sql}{figures/query-3/query_3_unindexed_mil_datos.png}{figures/query-3/query_3_unindexed_diezmil_datos.png}{figures/query-3/query_3_unindexed_cienmil_datos.png}{figures/query-3/query_3_unindexed_millon_datos.png}
 	\item{Ejecución con índices por defecto}
-		\queryExecutionPlanGroup{code-snippets/query-2/query_2_indexed_default.sql}{figures/query-2/query_2_indexed_default_mil_datos.png}{figures/query-2/query_2_indexed_default_diezmil_datos.png}{figures/query-2/query_2_indexed_default_cienmil_datos.png}{figures/query-2/query_2_indexed_default_millon_datos.png}
+		\queryExecutionPlanGroup{code-snippets/query-3/query_3_indexed_default.sql}{figures/query-3/query_3_indexed_default_mil_datos.png}{figures/query-3/query_3_indexed_default_diezmil_datos.png}{figures/query-3/query_3_indexed_default_cienmil_datos.png}{figures/query-3/query_3_indexed_default_millon_datos.png}
 	\item{Ejecución con índices por defecto más índices personalizados}
-		\queryExecutionPlanGroup{code-snippets/query-2/query_2_unindexed.sql}{figures/query-2/query_2_unindexed_mil_datos.png}{figures/query-2/query_2_unindexed_diezmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}{figures/query-2/query_2_unindexed_cienmil_datos.png}
-	\item{Explicación de la consulta}
-	\begin{itemize}
-		\item {Con índices}
-		\item {Sin índices}
-	\end{itemize}
+		\queryExecutionPlanGroup{code-snippets/query-3/query_3_indexed_custom.sql}{figures/query-3/query_3_indexed_custom_mil_datos.png}{figures/query-3/query_3_indexed_custom_diezmil_datos.png}{figures/query-3/query_3_indexed_custom_cienmil_datos.png}{figures/query-3/query_3_indexed_custom_millon_datos.png}
+      \item{Descripción de las ejecuciones}
+      \begin{itemize}
+            \item {\textbf{Sin índices}: Aquí va el texto}
+            \item {\textbf{Con índices por defecto}: Aquí va el texto}
+            \item {\textbf{Con índices por defecto más índices personalizados}: Aquí va el texto}
+      \end{itemize}
 \end{itemize}
 \subsection{Plataforma de pruebas}
 \input{tables/plataforma-de-prueba-table.tex}
@@ -72,7 +85,7 @@ Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejerc
 \input{tables/medicion-tiempo-unindexed-tables.tex}
 \subsubsection{Con índices por defecto}
 \input{tables/medicion-tiempo-indexed-default-tables.tex}
-\subsubsection{Con índices por defecto más índices perssonalizados}
+\subsubsection{Con índices por defecto más índices personalizados}
 \input{tables/medicion-tiempo-indexed-custom.tex}
 \subsection{Resultados, análisis y discusión}
 \subsubsection{Consulta 1}
