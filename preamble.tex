@@ -13,6 +13,7 @@
 \usepackage{listings}
 \usepackage{xparse}
 \usepackage{hyperref}
+\usepackage{ulem}
 
 \colorlet{darkGreen}{green!40!black}
 
@@ -101,4 +102,8 @@
 		\end{tabularx}
 		\caption{#2}
 	\end{table}
+}
+
+\newcommand{\link}[2]{
+	\textcolor{blue}{\href{#1}{\uline{\textit{#2}}}}
 }
