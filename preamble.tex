@@ -86,3 +86,19 @@
 	\queryExecutionPlanItem{Para cien mil datos}{#4}
 	\queryExecutionPlanItem{Para un millón de datos}{#5}
 }
+
+\newcommand{\executionTimeTable}[2]{
+	\begin{table}[H]
+		\centering
+		\renewcommand{\arraystretch}{1.5}
+		\begin{tabularx}{\textwidth}{|c|c|c|c|>{\centering\arraybackslash}X|}
+			\hline
+			\textbf{Ejecución} & \textbf{1k} & \textbf{10k} & \textbf{100k} & \textbf{1m} \\
+			\hline
+			#1                                                                                                   \\
+			\hline
+		\end{tabularx}
+		\caption{#2}
+	\end{table}
+}
+
