@@ -30,8 +30,14 @@ En la siguiente sección, se evaluará el rendimiento de la base de datos median
       Primero, creamos cuatro esquemas: ``mil\_datos'', ``diezmil\_datos'', ``cienmil\_datos'' y ``millon\_datos''. Cada uno de estos esquemas contiene la cantidad de datos que su nombre indica.
 \end{sloppypar}
 \lstinputlisting[language=SQL]{code-snippets/create_schemas.sql}
+
 Luego, ejecutaremos cada consulta en cada uno de los esquemas, primero, sin índices, segundo, con los índices por defecto y, finalmente, con los índices por defecto más los índices que consideremos más adecuados para garantizar la ejecución óptima de estas consultas.\\
-Finalmente, mediremos el tiempo de ejecución y analizaremos los planes de ejercución de cada consulta en cada uno de los escenarios mencionados.
+
+Sin embargo, antes de ejecutar las consultas sin índice y con el índice por defecto, es necesario ejecutar el comando \textbf{DROP INDEX IF EXISTS}. Esto asegura que cualquier índice personalizado creado previamente no interfiera con las consultas. De esta manera, garantizamos que las consultas se realicen correctamente y que los resultados reflejen el rendimiento de las consultas con y sin los índices predeterminados de la base de datos. \\
+
+Por cada consulta realizada, se aplica un \textbf{VACUUM FULL} a todas las tablas involucradas para asegurar que estas se reestructuren completamente, recuperando espacio no utilizado y mejorando la eficiencia de la base de datos. \\
+
+Finalmente, mediremos el tiempo de ejecución usando el comando \textbf{EXPLAIN ANALYZE} para probar el rendimiento y analizaremos los planes de ejercución de cada consulta en cada uno de los escenarios mencionados.
 \subsection{Optimización de consultas}
 \subsubsection{Planes de índices para la primera consulta}
 \begin{itemize}
