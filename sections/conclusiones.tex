@@ -1,1 +1,8 @@
 \section{Conclusiones}
+A lo largo de este proyecto, hemos llevado a cabo un análisis exhaustivo del rendimiento de la ejecución de las consultas SQL planteadas bajo 3 contextos: sin índices, con índices que el optimizador de PostgreSQL identifica y con índices declarados manualmente junto a los anteriores. Nuestro enfoque se centró en evaluar cómo estos índices o su ausencia afectan el tiempo de ejecución y la eficiencia general de las consultas, especialmente en escenarios con grandes volúmenes de datos. A continuación, presentamos las conclusiones derivadas de nuestro trabajo.
+
+Primero, la implementación de índices personalizados generó mejoras significativas en los tiempos de ejecución de las consultas, siendo estas optimizaciones cruciales en escenarios de un millón de registros, donde la eficiencia del índice se hizo más evidente. Los índices agilizan las búsquedas y disminuyen las filas a evaluar, mejorando considerablemente el rendimiento de la base de datos.
+
+Segundo, el desarrollo del modelo entidad-relación y relacional permitió implementar una base de datos consistente que representa eficazmente el esquema propuesto, facilitando la creación y manipulación eficiente de relaciones entre diferentes entidades.
+
+Por último, las consultas desarrolladas, de alta complejidad, resaltaron la importancia de los planes de consulta y el impacto de los índices en la optimización, demostrando cómo la escalabilidad y la eficiencia se pueden mejorar significativamente mediante una arquitectura de base de datos bien optimizada para manejar grandes volúmenes de datos.

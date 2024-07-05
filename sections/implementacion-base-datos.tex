@@ -5,6 +5,9 @@
 \lstinputlisting[language=SQL]{code-snippets/create_triggers.sql}
 \subsection{Creación de vistas en PostgreSQL}
 \lstinputlisting[language=SQL]{code-snippets/create_views.sql}
-
-\subsection{Carga de datos}{Durante la carga de datos en los esquemas de 1k, 10k, 100k y 1M, se implementó la simulación de datos faltantes en archivos CSV, seguida de su inserción mediante Docker como tuplas en lugar de listas. Este enfoque fue diseñado para optimizar las operaciones de lectura desde los contenedore. El propósito principal de esta práctica es facilitar el acceso inmediato a la base de datos simplemente descargando la imagen Docker, asegurando así una configuración ágil y eficiente del entorno de desarrollo.}
-\subsection{Simulación de datos faltantes}{Para simular datos faltantes, se desarrolló un script en Python que utilizó la biblioteca externa Faker junto con la biblioteca nativa random para generar datos aleatorios en los archivos CSV mencionados. Estos datos fueron posteriormente insertados mediante un bulk insert, optimizando así el proceso de carga masiva y garantizando la diversidad y precisión de los datos simulados.}
+\subsection{Carga de datos}
+Utilizamos Docker y Docker Compose para crear un contenedor en base a la imagen docker de PostgreSQL. En específico, Docker Compose nos ayudó a automatizar el proceso de creación de esquemas, tablas, disparadores y vistas, y la inserción de los datos faltantes en forma de CSV para cada esquema. Todo esto con el fin de facilitar y optimizar el trabajo colaborativo y la replicación del entorno de desarrollo.
+\subsection{Simulación de datos faltantes}
+Para simular datos faltantes, se desarrolló un módulo en Python que utilizó la biblioteca externa Faker junto con la biblioteca nativa random para generar datos aleatorios en los archivos CSV mencionados. Estos datos fueron posteriormente insertados mediante un bulk insert, optimizando así el proceso de carga masiva y garantizando la diversidad y precisión de los datos simulados.
+\subsection{Generacion de gráficos}
+La generación de diversos gráficos utilizados en nuestro proyecto requirieron el desarrollo de dos módulos en Python: uno para convertir los planes de ejecución en formato CSV a PNG, y otro para obtener las gráficas comparativas respecto a los índices para cada consulta. Para estos dos casos, utilizamos las librerías externas Pandas y Matplotlib.
