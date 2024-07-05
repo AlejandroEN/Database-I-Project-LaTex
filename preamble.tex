@@ -72,21 +72,24 @@
 
 \newcommand{\green}[1]{\textcolor{darkGreen}{#1}}
 
-\newcommand{\queryExecutionPlanItem}[2]{
+\newcommand{\queryExecutionPlanItem}[3]{
 	\begin{itemize}
 		\item{#1:}
 	\end{itemize}
 	\begin{center}
 		\includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{#2}
 	\end{center}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{#3}
+	\end{center}
 }
 
-\newcommand{\queryExecutionPlanGroup}[5]{
+\newcommand{\queryExecutionPlanGroup}[9]{
 	\lstinputlisting[language=SQL]{#1}
-	\queryExecutionPlanItem{Para mil datos}{#2}
-	\queryExecutionPlanItem{Para diez mil datos}{#3}
-	\queryExecutionPlanItem{Para cien mil datos}{#4}
-	\queryExecutionPlanItem{Para un millón de datos}{#5}
+	\queryExecutionPlanItem{Para mil datos}{#2}{#6}
+	\queryExecutionPlanItem{Para diez mil datos}{#3}{#7}
+	\queryExecutionPlanItem{Para cien mil datos}{#4}{#8}
+	\queryExecutionPlanItem{Para un millón de datos}{#5}{#9}
 }
 
 \newcommand{\executionTimeTable}[2]{
@@ -97,7 +100,7 @@
 			\hline
 			\textbf{Ejecución} & \textbf{1k (ms)} & \textbf{10k (ms)} & \textbf{100k (ms)} & \textbf{1M (ms)} \\
 			\hline
-			#1                                                                                                   \\
+			#1                                                                                                \\
 			\hline
 		\end{tabularx}
 		\caption{#2}
